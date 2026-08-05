@@ -1,110 +1,124 @@
-import React, { useRef, useState, useEffect } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState, useEffect } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const Navbar = () => {
-  const headerRef = useRef(null);
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useGSAP(() => {
-    gsap.from(headerRef.current, {
-      y: -100,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-    });
-  }, { scope: headerRef });
+  const navLinks = ['Home', 'About', 'Collections', 'Best Sellers', 'Contact'];
 
   return (
-    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 w-full">
-      {/* Announcement Bar */}
-      <div className="bg-sage-dark text-white text-sm py-2 text-center px-4 font-sans tracking-wide">
-        🌸 FREE SHIPPING on all orders above ₹999 | PAN India
-      </div>
-
-      {/* Main Navbar */}
-      <nav
-        className={`w-full transition-all duration-500 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-cream-dark/30'
-            : 'bg-cream/80 backdrop-blur-sm'
-        }`}
+    <header
+      id="main-navbar"
+      style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0,
+        zIndex: 100,
+        height: '68px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 52px',
+        transition: 'background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease',
+        background: scrolled ? 'rgba(237,224,204,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        boxShadow: scrolled ? '0 1px 20px rgba(0,0,0,0.06)' : 'none',
+      }}
+    >
+      {/* AF Monogram */}
+      <a
+        href="#"
+        id="navbar-logo"
+        aria-label="Anom Flora Home"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '1px',
+          border: '1px solid rgba(30,30,20,0.48)',
+          padding: '5px 11px 5px 9px',
+          textDecoration: 'none',
+        }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          
-          {/* Logo */}
-          <div className="flex items-center cursor-pointer group">
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <svg className="w-7 h-7 text-sage-dark group-hover:text-sage transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M12 22c4-4 8-8 8-13A8 8 0 0 0 4 9c0 5 4 9 8 13z" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 22V12" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 12c-2-2-4-2-6-1" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 12c2-2 4-2 6-1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <span className="font-serif text-2xl font-bold text-sage-dark">Anom Flora</span>
-              </div>
-              <span className="tracking-[0.3em] text-[10px] uppercase text-warm-gray ml-9 mt-0.5">
-                Artificial Flowers
-              </span>
-            </div>
-          </div>
+        <span style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontSize: '22px',
+          fontWeight: 500,
+          color: '#1e2b18',
+          lineHeight: 1,
+          letterSpacing: '0.02em',
+        }}>A</span>
+        <span style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontSize: '21px',
+          fontWeight: 400,
+          fontStyle: 'italic',
+          color: '#1e2b18',
+          lineHeight: 1,
+          letterSpacing: '0.02em',
+        }}>F</span>
+      </a>
 
-          {/* Links */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {['Home', 'Collections', 'Best Sellers', 'About Us', 'Why Us', 'Contact'].map((link, i) => (
+      {/* Nav Links */}
+      <nav aria-label="Main navigation">
+        <ul style={{ display: 'flex', alignItems: 'center', gap: '42px', listStyle: 'none', margin: 0, padding: 0 }}>
+          {navLinks.map((link, i) => (
+            <li key={link}>
               <a
-                key={link}
                 href="#"
-                className={`font-sans font-medium text-sm transition-colors duration-200 relative group ${
-                  i === 0 ? 'text-sage-dark' : 'text-charcoal-light hover:text-sage-dark'
-                }`}
+                id={`nav-${link.toLowerCase().replace(/\s+/g, '-')}`}
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '14px',
+                  fontWeight: i === 0 ? 500 : 400,
+                  color: '#2c2c2c',
+                  textDecoration: i === 0 ? 'underline' : 'none',
+                  textUnderlineOffset: '4px',
+                  letterSpacing: '0.01em',
+                  opacity: i === 0 ? 1 : 0.8,
+                  transition: 'opacity 0.2s',
+                }}
+                onMouseEnter={e => { e.target.style.opacity = 1; }}
+                onMouseLeave={e => { e.target.style.opacity = i === 0 ? 1 : 0.8; }}
               >
                 {link}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-sage transition-all duration-300 ${
-                  i === 0 ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
               </a>
-            ))}
-          </div>
-
-          {/* Icons */}
-          <div className="flex items-center space-x-5 text-charcoal-light">
-            <button className="hover:text-sage-dark transition-colors duration-200 p-1">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-            <button className="hover:text-sage-dark transition-colors duration-200 p-1">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </button>
-            <button className="hover:text-sage-dark transition-colors duration-200 relative p-1">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
-              <span className="absolute -top-1 -right-1.5 bg-sage text-white text-[9px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
-                0
-              </span>
-            </button>
-          </div>
-
-        </div>
+            </li>
+          ))}
+        </ul>
       </nav>
+
+      {/* Icons */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <button
+          id="navbar-bag"
+          aria-label="Shopping bag"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: '#2c2c2c', opacity: 0.75, transition: 'opacity 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.opacity = 1}
+          onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </button>
+        <button
+          id="navbar-user"
+          aria-label="User account"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: '#2c2c2c', opacity: 0.75, transition: 'opacity 0.2s' }}
+          onMouseEnter={e => e.currentTarget.style.opacity = 1}
+          onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+      </div>
     </header>
   );
-};
-
-export default Navbar;
+}

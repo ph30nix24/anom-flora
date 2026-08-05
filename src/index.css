@@ -16,23 +16,39 @@
   --color-charcoal-light: #4A4A4A;
   --color-warm-white: #FEFCF9;
   --color-warm-gray: #9B9590;
+  --color-marble: #EDE6DB;
 
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-script: "Great Vibes", cursive;
+  --font-elegant: "Cormorant Garamond", Georgia, serif;
 }
 
 /* ===== Base Styles ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: var(--font-sans);
   color: var(--color-charcoal);
   background-color: var(--color-warm-white);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== Scrollbar ===== */
@@ -115,4 +131,26 @@ body {
   content: '✿';
   margin-right: 8px;
   color: var(--color-blush-dark);
+}
+
+/* ===== Hero Section Specifics ===== */
+.hero-gold-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 50%, transparent 100%);
+  margin: 12px 0;
+}
+
+.hero-category-card {
+  text-decoration: none;
+}
+
+.hero-cta-btn:active {
+  transform: scale(0.97);
+}
+
+/* Small decorative flourish */
+@keyframes gentle-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(1.5deg); }
 }

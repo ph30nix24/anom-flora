@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anom Flora — Timeless Artificial Flowers</title>
+  <meta name="description" content="Discover timeless artificial flowers by Anom Flora. Premium quality blooms for every space." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Playfair+Display:wght@400;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ─────────────────────────────────── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html, body { width:100%; height:100%; overflow-x:hidden; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: #ede0cc;
+    }
+
+    /* ══════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      /* starts transparent, JS adds class on scroll */
+      background: transparent;
+      transition: background 0.4s, backdrop-filter 0.4s;
+    }
+    #navbar.scrolled {
+      background: rgba(237,224,204,0.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    }
+
+    /* AF monogram */
+    .af-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 1px;
+      border: 1px solid rgba(30,30,20,0.5);
+      padding: 5px 11px 5px 9px;
+      text-decoration: none;
+    }
+    .af-logo .af-a {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #1e2b18;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .af-logo .af-f {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      font-weight: 400;
+      font-style: italic;
+      color: #1e2b18;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #2c2c2c;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+      opacity: 0.82;
+      position: relative;
+    }
+    .nav-links a.active {
+      opacity: 1;
+      font-weight: 500;
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: #2c2c2c;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    /* Nav icons */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-icons button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: #2c2c2c;
+      padding: 4px;
+      transition: opacity 0.2s;
+      opacity: 0.75;
+    }
+    .nav-icons button:hover { opacity: 1; }
+
+    /* ══════════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+
+      /* Warm beige gradient matching reference */
+      background:
+        linear-gradient(160deg, #f2e8d9 0%, #e9d9c4 35%, #e4d3bc 65%, #dcceba 100%);
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Diagonal light ray (top-right warmth) */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(118deg,
+          transparent 0%,
+          rgba(255,248,235,0.55) 28%,
+          rgba(255,248,235,0.25) 48%,
+          transparent 68%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Leaf shadow hint on far left */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,
+          rgba(160,145,120,0.14) 0%,
+          transparent 25%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── Hero main content area ── */
+    .hero-content {
+      position: relative;
+      flex: 1;
+      /* we need room for the bottom strip */
+      margin-bottom: 0;
+    }
+
+    /* ── LEFT TEXT PANEL ── */
+    .hero-left {
+      position: absolute;
+      top: 68px;     /* below navbar */
+      left: 0;
+      width: 360px;
+      padding: 52px 0 0 52px;
+      z-index: 30;
+    }
+
+    .hero-anom {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 90px;
+      font-weight: 700;
+      color: #1e2d18;
+      letter-spacing: 0.04em;
+      line-height: 0.88;
+      display: block;
+    }
+
+    .hero-flora {
+      font-family: 'Great Vibes', cursive;
+      font-size: 88px;
+      color: #b8922e;
+      line-height: 1;
+      display: block;
+      margin-top: -4px;
+      margin-left: 10px;
+    }
+
+    /* Ornament divider */
+    .hero-ornament {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0 22px 0;
+    }
+    .hero-ornament-line {
+      height: 1px;
+      width: 56px;
+      background: linear-gradient(to right, #c4a050, transparent);
+    }
+    .hero-ornament-icon {
+      font-size: 13px;
+      color: #c4a050;
+      line-height: 1;
+    }
+
+    .hero-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 15.5px;
+      font-weight: 400;
+      color: #4a4a4a;
+      line-height: 1.6;
+      max-width: 230px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 30px;
+      background: #2d4128;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .hero-cta:hover {
+      background: #3d5737;
+      box-shadow: 0 8px 28px rgba(45,65,40,0.28);
+    }
+
+    /* ── FLOWER IMAGE ──
+       z-index: 10 — sits ABOVE the BLOOM text (z:5)
+       Uses mix-blend-mode: multiply so white bg merges with hero bg
+    ── */
+    .hero-flowers {
+      position: absolute;
+      top: -10px;
+      right: -20px;
+      /* starts around 20% from left to cover the right 80% */
+      left: 16%;
+      bottom: 140px; /* leave room for bottom strip */
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-flowers img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      mix-blend-mode: multiply;
+    }
+
+    /* ── BLOOM TEXT ──
+       z-index: 5 — behind flower image but above background
+    ── */
+    .hero-bloom {
+      position: absolute;
+      bottom: 118px; /* just above the bottom strip */
+      left: 26%;
+      right: 0;
+      z-index: 5;
+      pointer-events: none;
+      user-select: none;
+      line-height: 0.82;
+    }
+    .hero-bloom span {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(90px, 13.5vw, 175px);
+      font-weight: 900;
+      color: rgba(255,255,255,0.94);
+      letter-spacing: -0.01em;
+      display: block;
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════════
+       BOTTOM STRIP
+    ══════════════════════════════════════════ */
+    .hero-bottom {
+      position: relative;
+      z-index: 40;
+      height: 148px;
+      background: rgba(241,231,214,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(180,155,120,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 52px;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Feature items */
+    .features-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 130px;
+      gap: 6px;
+    }
+    .feature-icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(180,155,120,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2px;
+    }
+    .feature-icon-circle svg {
+      width: 22px;
+      height: 22px;
+      stroke: #6b6260;
+      fill: none;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .feature-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #2c2c2c;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    .feature-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 9.5px;
+      font-weight: 400;
+      color: rgba(60,55,50,0.65);
+      line-height: 1.45;
+      max-width: 110px;
+    }
+
+    /* Category thumbnails */
+    .categories-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .cat-card img {
+      width: 130px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+      transition: transform 0.32s ease, box-shadow 0.32s ease;
+    }
+    .cat-card:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    }
+    .cat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #2c2c2c;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <header id="navbar">
+
+    <!-- AF Monogram -->
+    <a class="af-logo" href="#" id="navbar-logo" aria-label="Anom Flora Home">
+      <span class="af-a">A</span>
+      <span class="af-f">F</span>
+    </a>
+
+    <!-- Nav Links -->
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="#" class="active" id="nav-home">Home</a></li>
+        <li><a href="#" id="nav-about">About</a></li>
+        <li><a href="#" id="nav-collections">Collections</a></li>
+        <li><a href="#" id="nav-bestsellers">Best Sellers</a></li>
+        <li><a href="#" id="nav-contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Icons -->
+    <div class="nav-icons">
+      <button id="navbar-bag" aria-label="Shopping bag">
+        <svg width="22" height="22" viewBox="0 0 24 24" stroke-width="1.4">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="currentColor" fill="none"/>
+          <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor"/>
+          <path d="M16 10a4 4 0 01-8 0" stroke="currentColor" fill="none"/>
+        </svg>
+      </button>
+      <button id="navbar-user" aria-label="User account">
+        <svg width="22" height="22" viewBox="0 0 24 24" stroke-width="1.4">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" fill="none"/>
+          <circle cx="12" cy="7" r="4" stroke="currentColor" fill="none"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════ -->
+  <section id="hero" aria-label="Hero section">
+
+    <!-- Main content area (fills above bottom strip) -->
+    <div class="hero-content">
+
+      <!-- LEFT TEXT -->
+      <div class="hero-left">
+        <h1>
+          <span class="hero-anom">ANOM</span>
+          <span class="hero-flora">Flora</span>
+        </h1>
+
+        <!-- Ornament -->
+        <div class="hero-ornament">
+          <div class="hero-ornament-line"></div>
+          <span class="hero-ornament-icon">✦</span>
+        </div>
+
+        <p class="hero-tagline">
+          Timeless Artificial Flowers<br>for Every Space.
+        </p>
+
+        <button class="hero-cta" id="hero-explore-btn">
+          EXPLORE COLLECTION
+        </button>
+      </div>
+
+      <!-- BLOOM TEXT (z:5, behind flowers) -->
+      <div class="hero-bloom" aria-hidden="true">
+        <span>BLOOM</span>
+      </div>
+
+      <!-- FLOWER IMAGE (z:10, mix-blend-mode:multiply) -->
+      <div class="hero-flowers">
+        <img
+          src="/images/flowers_white_bg.jpg"
+          alt="Premium artificial flower arrangement"
+        />
+      </div>
+
+    </div><!-- .hero-content -->
+
+
+    <!-- BOTTOM STRIP -->
+    <div class="hero-bottom">
+
+      <!-- Features -->
+      <div class="features-row">
+
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <!-- flower / premium icon -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 2a2.5 2.5 0 012.5 2.5c0 1.38-1.12 2.5-2.5 2.5S9.5 5.88 9.5 4.5A2.5 2.5 0 0112 2z"/>
+              <path d="M12 17a2.5 2.5 0 012.5 2.5c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5A2.5 2.5 0 0112 17z"/>
+              <path d="M2 12a2.5 2.5 0 012.5-2.5c1.38 0 2.5 1.12 2.5 2.5S5.88 14.5 4.5 14.5A2.5 2.5 0 012 12z"/>
+              <path d="M17 12a2.5 2.5 0 012.5-2.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5A2.5 2.5 0 0117 12z"/>
+            </svg>
+          </div>
+          <p class="feature-title">Premium Quality</p>
+          <p class="feature-desc">Finest artificial flowers crafted with care.</p>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <!-- leaf / long lasting icon -->
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22V12"/>
+              <path d="M12 12C12 7 8 4 4 3c0 5 2 9 8 9z"/>
+              <path d="M12 12c0-5 4-8 8-9 0 5-2 9-8 9z"/>
+            </svg>
+          </div>
+          <p class="feature-title">Long Lasting</p>
+          <p class="feature-desc">Beautiful blooms that last forever.</p>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <!-- house icon -->
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <p class="feature-title">Perfect for Any Space</p>
+          <p class="feature-desc">Ideal for home, office &amp; special occasions.</p>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <!-- gift box icon -->
+            <svg viewBox="0 0 24 24">
+              <polyline points="20 12 20 22 4 22 4 12"/>
+              <rect x="2" y="7" width="20" height="5"/>
+              <line x1="12" y1="22" x2="12" y2="7"/>
+              <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/>
+              <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+            </svg>
+          </div>
+          <p class="feature-title">Thoughtful Gift</p>
+          <p class="feature-desc">Spread beauty and joy with every bouquet.</p>
+        </div>
+
+      </div><!-- .features-row -->
+
+      <!-- Category thumbnails -->
+      <div class="categories-row">
+        <a class="cat-card" href="#" id="cat-bouquets">
+          <img src="/images/bouquets_category.jpg" alt="Bouquets" />
+          <p class="cat-label">Bouquets</p>
+        </a>
+        <a class="cat-card" href="#" id="cat-potted-plants">
+          <img src="/images/potted_plants_category.jpg" alt="Potted Plants" />
+          <p class="cat-label">Potted Plants</p>
+        </a>
+        <a class="cat-card" href="#" id="cat-arrangements">
+          <img src="/images/arrangements_category.jpg" alt="Arrangements" />
+          <p class="cat-label">Arrangements</p>
+        </a>
+      </div>
+
+    </div><!-- .hero-bottom -->
+
+  </section><!-- #hero -->
+
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
+
+</body>
+</html>
