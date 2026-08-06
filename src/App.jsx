@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import HeroNew from './components/HeroNew'
 import Collections from './components/Collections'
 import WhyChooseUs from './components/WhyChooseUs'
 import Testimonials from './components/Testimonials'
@@ -12,11 +13,12 @@ function App() {
     <div>
       <Navbar />
       <main>
-        <Hero />
+        {/* <Hero />
         <Collections />
         <WhyChooseUs />
         <Testimonials />
-        <CTA />
+        <CTA /> */}
+        <HeroNew />
       </main>
       <Footer />
     </div>

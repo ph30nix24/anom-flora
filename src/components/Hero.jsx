@@ -2,8 +2,6 @@ import React from 'react';
 
 /* ──────────────────────────────────────────────────────────────
    ANOM FLORA — Hero Section
-   Pixel-perfect match to reference design:
-
    Layout (z-index layers, bottom → top):
      0  background gradient (warm beige)
      1  diagonal light-ray overlay + left shadow
@@ -65,101 +63,66 @@ export default function Hero() {
     <section
       id="hero-section"
       aria-label="Hero"
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        minHeight: '640px',
-        overflow: 'hidden',
-        /* Warm beige — matches the reference exactly */
-        background: 'linear-gradient(160deg, #f2e8d9 0%, #e9d9c4 35%, #e4d3bc 65%, #dcceba 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      className="relative w-full h-screen min-h-[640px] overflow-hidden flex flex-col"
+      style={{ background: 'linear-gradient(160deg, #f2e8d9 0%, #e9d9c4 35%, #e4d3bc 65%, #dcceba 100%)' }}
     >
 
       {/* ── Diagonal light ray (z:1) ── */}
-      <div aria-hidden="true" style={{
-        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
-        background: 'linear-gradient(118deg, transparent 0%, rgba(255,248,232,0.55) 28%, rgba(255,248,232,0.22) 50%, transparent 70%)',
-      }}/>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{ background: 'linear-gradient(118deg, transparent 0%, rgba(255,248,232,0.55) 28%, rgba(255,248,232,0.22) 50%, transparent 70%)' }}
+      />
 
       {/* ── Left-edge leaf shadow (z:1) ── */}
-      <div aria-hidden="true" style={{
-        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
-        background: 'linear-gradient(to right, rgba(155,138,112,0.16) 0%, transparent 24%)',
-      }}/>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{ background: 'linear-gradient(to right, rgba(155,138,112,0.16) 0%, transparent 24%)' }}
+      />
 
       {/* ══════════ MAIN CONTENT AREA ══════════ */}
-      <div style={{ position: 'relative', flex: 1 }}>
+      <div className="relative flex-1">
 
         {/* ── LEFT TEXT PANEL (z:20) ── */}
-        <div style={{
-          position: 'absolute',
-          top: '68px',     // navbar height
-          left: 0,
-          width: '360px',
-          padding: '52px 0 0 52px',
-          zIndex: 20,
-        }}>
-          <h1 style={{ margin: 0 }}>
-            <span style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: '90px',
-              fontWeight: 700,
-              color: '#1e2d18',
-              letterSpacing: '0.04em',
-              lineHeight: 0.88,
-              display: 'block',
-            }}>ANOM</span>
-            <span style={{
-              fontFamily: "'Great Vibes', cursive",
-              fontSize: '88px',
-              color: '#b8922e',
-              lineHeight: 1,
-              display: 'block',
-              marginTop: '-4px',
-              marginLeft: '10px',
-            }}>Flora</span>
+        <div className="absolute top-[68px] left-0 w-[360px] pt-[52px] pl-[52px] z-[20]">
+          <h1 className="m-0">
+            <span
+              className="font-elegant text-[90px] font-bold text-[#1e2d18] tracking-[0.04em] leading-[0.88] block"
+            >
+              ANOM
+            </span>
+            <span
+              className="font-script text-[88px] text-[#b8922e] leading-none block mt-[-4px] ml-[10px]"
+            >
+              Flora
+            </span>
           </h1>
 
           {/* Gold ornament divider */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '20px 0 22px' }}>
-            <div style={{ height: '1px', width: '56px', background: 'linear-gradient(to right, #c4a050, transparent)' }}/>
-            <span style={{ fontSize: '13px', color: '#c4a050', lineHeight: 1 }}>✦</span>
+          <div className="flex items-center gap-[10px] my-5">
+            <div
+              className="h-px w-[56px]"
+              style={{ background: 'linear-gradient(to right, #c4a050, transparent)' }}
+            />
+            <span className="text-[13px] text-[#c4a050] leading-none">✦</span>
           </div>
 
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '15.5px',
-            fontWeight: 400,
-            color: '#4a4a4a',
-            lineHeight: 1.6,
-            maxWidth: '230px',
-            margin: 0,
-          }}>
+          <p className="font-sans text-[15.5px] font-normal text-[#4a4a4a] leading-relaxed max-w-[230px] m-0">
             Timeless Artificial Flowers<br/>for Every Space.
           </p>
 
           <button
             id="hero-explore-btn"
-            style={{
-              display: 'inline-block',
-              marginTop: '28px',
-              padding: '13px 30px',
-              background: ctaHover ? '#3d5737' : '#2d4128',
-              boxShadow: ctaHover ? '0 8px 28px rgba(45,65,40,0.28)' : 'none',
-              color: '#fff',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: '11px',
-              fontWeight: 600,
-              letterSpacing: '0.17em',
-              textTransform: 'uppercase',
-              border: 'none',
-              borderRadius: '9999px',
-              cursor: 'pointer',
-              transition: 'background 0.3s ease, box-shadow 0.3s ease',
-            }}
+            className={[
+              'inline-block mt-7 px-[30px] py-[13px]',
+              'text-white font-sans text-[11px] font-semibold tracking-[0.17em] uppercase',
+              'border-none rounded-full cursor-pointer',
+              'transition-all duration-300 ease-in-out',
+              ctaHover
+                ? 'bg-[#3d5737] shadow-[0_8px_28px_rgba(45,65,40,0.28)]'
+                : 'bg-[#2d4128] shadow-none',
+            ].join(' ')}
             onMouseEnter={() => setCtaHover(true)}
             onMouseLeave={() => setCtaHover(false)}
           >
@@ -168,55 +131,27 @@ export default function Hero() {
         </div>
 
         {/* ── BLOOM TEXT (z:5) — BEHIND flower image ── */}
-        <div aria-hidden="true" style={{
-          position: 'absolute',
-          bottom: '8px',
-          left: '26%',
-          right: 0,
-          zIndex: 5,
-          pointerEvents: 'none',
-          userSelect: 'none',
-          lineHeight: 0.82,
-        }}>
-          <span style={{
-            fontFamily: "'Playfair Display', Georgia, serif",
-            fontSize: 'clamp(90px, 13.5vw, 172px)',
-            fontWeight: 900,
-            color: 'rgba(255,255,255,0.94)',
-            letterSpacing: '-0.01em',
-            display: 'block',
-            whiteSpace: 'nowrap',
-          }}>
+        <div
+          aria-hidden="true"
+          className="absolute bottom-[8px] left-[26%] right-0 z-[5] pointer-events-none select-none leading-[0.82]"
+        >
+          <span
+            className="font-serif font-black text-[rgba(255,255,255,0.94)] tracking-[-0.01em] block whitespace-nowrap"
+            style={{ fontSize: 'clamp(90px, 13.5vw, 172px)' }}
+          >
             BLOOM
           </span>
         </div>
 
         {/* ── FLOWER IMAGE (z:10, mix-blend-mode:multiply) ── */}
-        {/* Sits ABOVE the BLOOM text; white bg merges with hero bg via multiply */}
-        <div style={{
-          position: 'absolute',
-          top: '-10px',
-          right: '-20px',
-          left: '16%',
-          bottom: 0,
-          zIndex: 10,
-          pointerEvents: 'none',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'center',
-        }}>
+        <div
+          className="absolute top-[-10px] right-[-20px] left-[16%] bottom-0 z-[10] pointer-events-none overflow-hidden flex items-end justify-center"
+        >
           <img
             src="/images/flowers_white_bg.png"
             alt="Luxurious artificial flower arrangement with cream dahlias, pink peonies and sage eucalyptus"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center bottom',
-              mixBlendMode: 'multiply',
-              display: 'block',
-            }}
+            className="w-full h-full object-cover object-bottom block"
+            style={{ mixBlendMode: 'multiply' }}
           />
         </div>
 
@@ -224,118 +159,60 @@ export default function Hero() {
 
 
       {/* ══════════ BOTTOM STRIP (z:40) ══════════ */}
-      <div style={{
-        position: 'relative',
-        zIndex: 40,
-        height: '150px',
-        flexShrink: 0,
-        background: 'rgba(241,231,214,0.80)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        borderTop: '1px solid rgba(180,155,120,0.2)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 52px',
-        gap: '20px',
-      }}>
+      <div
+        className="relative z-[40] h-[150px] shrink-0 flex items-center justify-between px-[52px] gap-5"
+        style={{
+          background: 'rgba(241,231,214,0.80)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderTop: '1px solid rgba(180,155,120,0.2)',
+        }}
+      >
 
         {/* Feature icons */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0' }}>
+        <div className="flex items-start">
           {features.map(({ Icon, title, desc }, i) => (
             <div
               key={i}
-              className="hero-feature-item"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                width: '130px',
-                gap: '5px',
-              }}
+              className="flex flex-col items-center text-center w-[130px] gap-[5px]"
             >
-              <div style={{
-                width: '46px', height: '46px',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.52)',
-                border: '1px solid rgba(180,155,120,0.22)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '2px',
-              }}>
+              <div
+                className="w-[46px] h-[46px] rounded-full flex items-center justify-center mb-[2px]"
+                style={{
+                  background: 'rgba(255,255,255,0.52)',
+                  border: '1px solid rgba(180,155,120,0.22)',
+                }}
+              >
                 <Icon/>
               </div>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '9.5px',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                color: '#2c2c2c',
-                textTransform: 'uppercase',
-                lineHeight: 1.3,
-                margin: 0,
-              }}>{title}</p>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '9.5px',
-                fontWeight: 400,
-                color: 'rgba(60,55,50,0.65)',
-                lineHeight: 1.45,
-                maxWidth: '110px',
-                margin: 0,
-              }}>{desc}</p>
+              <p className="font-sans text-[9.5px] font-bold tracking-[0.1em] text-charcoal uppercase leading-[1.3] m-0">
+                {title}
+              </p>
+              <p className="font-sans text-[9.5px] font-normal text-[rgba(60,55,50,0.65)] leading-[1.45] max-w-[110px] m-0">
+                {desc}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Category thumbnails */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', flexShrink: 0 }}>
+        <div className="flex items-start gap-3 shrink-0">
           {categories.map(({ src, label, id }) => (
             <a
               key={id}
               href="#"
               id={id}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '7px',
-                textDecoration: 'none',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={e => {
-                const img = e.currentTarget.querySelector('img');
-                if (img) { img.style.transform = 'scale(1.06)'; img.style.boxShadow = '0 8px 28px rgba(0,0,0,0.18)'; }
-              }}
-              onMouseLeave={e => {
-                const img = e.currentTarget.querySelector('img');
-                if (img) { img.style.transform = 'scale(1)'; img.style.boxShadow = '0 4px 18px rgba(0,0,0,0.13)'; }
-              }}
+              className="flex flex-col items-center gap-[7px] no-underline cursor-pointer group"
             >
               <img
                 src={src}
                 alt={label}
-                style={{
-                  width: '130px',
-                  height: '100px',
-                  objectFit: 'cover',
-                  borderRadius: '10px',
-                  boxShadow: '0 4px 18px rgba(0,0,0,0.13)',
-                  transition: 'transform 0.32s ease, box-shadow 0.32s ease',
-                  display: 'block',
-                }}
+                className="w-[130px] h-[100px] object-cover rounded-[10px] block transition-[transform,box-shadow] duration-[320ms] ease-out group-hover:scale-[1.06]"
+                style={{ boxShadow: '0 4px 18px rgba(0,0,0,0.13)' }}
               />
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: '9px',
-                fontWeight: 700,
-                letterSpacing: '0.18em',
-                color: '#2c2c2c',
-                textTransform: 'uppercase',
-                margin: 0,
-              }}>{label}</p>
+              <p className="font-sans text-[9px] font-bold tracking-[0.18em] text-charcoal uppercase m-0">
+                {label}
+              </p>
             </a>
           ))}
         </div>

@@ -14,75 +14,43 @@ export default function Navbar() {
   return (
     <header
       id="main-navbar"
-      style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0,
-        zIndex: 100,
-        height: '68px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 52px',
-        transition: 'background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease',
-        background: scrolled ? 'rgba(237,224,204,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        boxShadow: scrolled ? '0 1px 20px rgba(0,0,0,0.06)' : 'none',
-      }}
+      className={[
+        'fixed top-0 left-0 right-0 z-100 h-17',
+        'flex items-center justify-between px-30',
+        'transition-all duration-400 ease-in-out',
+        scrolled
+          ? 'bg-[rgba(237,224,204,0.92)] backdrop-blur-[14px] shadow-[0_1px_20px_rgba(0,0,0,0.06)]'
+          : 'bg-transparent backdrop-blur-none shadow-none',
+      ].join(' ')}
     >
       {/* AF Monogram */}
       <a
         href="#"
         id="navbar-logo"
         aria-label="Anom Flora Home"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '1px',
-          border: '1px solid rgba(30,30,20,0.48)',
-          padding: '5px 11px 5px 9px',
-          textDecoration: 'none',
-        }}
+        className="flex justify-center items-center"
       >
-        <span style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: '22px',
-          fontWeight: 500,
-          color: '#1e2b18',
-          lineHeight: 1,
-          letterSpacing: '0.02em',
-        }}>A</span>
-        <span style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: '21px',
-          fontWeight: 400,
-          fontStyle: 'italic',
-          color: '#1e2b18',
-          lineHeight: 1,
-          letterSpacing: '0.02em',
-        }}>F</span>
+        <img src="./logo.png" alt="Anom Flora Logo" loading="lazy" className='size-18 '/>
+        <h4 className="font-cookie text-3xl font-medium text-[#1e2b18] leading-none tracking-[0.02em] ml-2">
+          Anom Flora
+        </h4>
       </a>
 
       {/* Nav Links */}
       <nav aria-label="Main navigation">
-        <ul style={{ display: 'flex', alignItems: 'center', gap: '42px', listStyle: 'none', margin: 0, padding: 0 }}>
+        <ul className="flex items-center gap-[42px] list-none m-0 p-0">
           {navLinks.map((link, i) => (
             <li key={link}>
               <a
                 href="#"
                 id={`nav-${link.toLowerCase().replace(/\s+/g, '-')}`}
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '14px',
-                  fontWeight: i === 0 ? 500 : 400,
-                  color: '#2c2c2c',
-                  textDecoration: i === 0 ? 'underline' : 'none',
-                  textUnderlineOffset: '4px',
-                  letterSpacing: '0.01em',
-                  opacity: i === 0 ? 1 : 0.8,
-                  transition: 'opacity 0.2s',
-                }}
-                onMouseEnter={e => { e.target.style.opacity = 1; }}
-                onMouseLeave={e => { e.target.style.opacity = i === 0 ? 1 : 0.8; }}
+                className={[
+                  'font-sans text-[14px] text-charcoal tracking-[0.01em]',
+                  'transition-opacity duration-200 no-underline',
+                  i === 0
+                    ? 'font-medium underline underline-offset-4 opacity-100'
+                    : 'font-normal opacity-80 hover:opacity-100',
+                ].join(' ')}
               >
                 {link}
               </a>
@@ -92,13 +60,11 @@ export default function Navbar() {
       </nav>
 
       {/* Icons */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+      <div className="flex items-center gap-5">
         <button
           id="navbar-bag"
           aria-label="Shopping bag"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: '#2c2c2c', opacity: 0.75, transition: 'opacity 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.opacity = 1}
-          onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+          className="bg-transparent border-none cursor-pointer flex items-center text-charcoal opacity-75 hover:opacity-100 transition-opacity duration-200"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
             <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
@@ -109,9 +75,7 @@ export default function Navbar() {
         <button
           id="navbar-user"
           aria-label="User account"
-          style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: '#2c2c2c', opacity: 0.75, transition: 'opacity 0.2s' }}
-          onMouseEnter={e => e.currentTarget.style.opacity = 1}
-          onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+          className="bg-transparent border-none cursor-pointer flex items-center text-charcoal opacity-75 hover:opacity-100 transition-opacity duration-200"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
