@@ -83,3 +83,27 @@ export const products = [
     isBestSeller: true,
   },
 ];
+
+import { Rose, HandHeart, Truck, ShieldCheck } from 'lucide-react';
+export const trustBadges = [
+  {
+    icon: Rose,
+    title: 'Premium Quality',
+    desc: 'Finest materials for a realistic & lasting beauty.',
+  },
+  {
+    icon: HandHeart,
+    title: 'Handcrafted',
+    desc: 'Each arrangement is crafted with care and perfection.',
+  },
+  {
+    icon: Truck,
+    title: 'Fast & Safe Delivery',
+    desc: 'Secure packaging and on-time delivery at your doorstep.',
+  },
+  {
+    icon: ShieldCheck ,
+    title: 'Hassle-Free Returns',
+    desc: 'Easy returns and 100% customer satisfaction guarantee.',
+  },
+];
