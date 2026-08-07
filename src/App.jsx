@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import HeroNew from './components/HeroNew'
+import BestSellers from './components/BestSellers'
 import Collections from './components/Collections'
 import WhyChooseUs from './components/WhyChooseUs'
 import Testimonials from './components/Testimonials'
@@ -19,6 +20,7 @@ function App() {
         <Testimonials />
         <CTA /> */}
         <HeroNew />
+        <BestSellers />
       </main>
       <Footer />
     </div>
