@@ -17,7 +17,7 @@ export default function Navbar() {
       id="main-navbar"
       className={[
         'fixed top-0 left-0 right-0 z-100 h-17',
-        'flex items-center justify-between px-30',
+        'flex items-center justify-between px-5 md:px-10 lg:px-30',
         'transition-all duration-400 ease-in-out',
         scrolled
           ? 'bg-[rgba(237,224,204,0.92)] backdrop-blur-[14px] shadow-[0_1px_20px_rgba(0,0,0,0.06)]'
@@ -40,7 +40,7 @@ export default function Navbar() {
       <div className="flex items-center gap-10  ">
 
         {/* Nav Links */}
-        <nav aria-label="Main navigation">
+        <nav aria-label="Main navigation" className="max-lg:hidden">
           <ul className="flex items-center gap-8 list-none m-0 p-0">
             {navLinks.map((link, i) => (
               <li key={link}>
