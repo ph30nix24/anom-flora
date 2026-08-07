@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=WindSong:wght@400;500&display=swap');
 @import "tailwindcss";
 
 /* ===== Custom Design Tokens ===== */
@@ -14,15 +14,16 @@
   --color-gold: #C4A265;
   --color-gold-light: #D4B87E;
   --color-charcoal: #2C2C2C;
-  --color-charcoal-light: #4A4A4A;
+  --color-primary-light: #6D6C4A;
   --color-warm-white: #FEFCF9;
   --color-warm-gray: #9B9590;
   --color-marble: #EDE6DB;
   --color-primary: #47482D;
+  --color-prime-yellow: #C08D34;
   --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-script: "Great Vibes", cursive;
-  --font-elegant: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-script: "WindSong", cursive;
+  --font-elegant: "Cormorant Infant", serif;
   --font-cookie: "Cookie", cursive;
 }
 
@@ -55,7 +56,7 @@ body {
 
 /* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -63,7 +64,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-blush-dark);
+  background: #fec561;
   border-radius: 4px;
 }
 
@@ -133,6 +134,10 @@ body {
   content: '✿';
   margin-right: 8px;
   color: var(--color-blush-dark);
+}
+
+.transition-smooth {
+  transition: all 0.3s ease-in-out;
 }
 
 /* ===== Hero Section Specifics ===== */
