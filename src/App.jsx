@@ -8,6 +8,12 @@ import WhyChooseUs from './components/WhyChooseUs'
 import Testimonials from './components/Testimonials'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import CustomDiv from './components/CustomDiv'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap'
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   return (
@@ -21,6 +27,8 @@ function App() {
         <CTA /> */}
         <HeroNew />
         <BestSellers />
+        <WhyChooseUs />
+        <CustomDiv />
       </main>
       <Footer />
     </div>

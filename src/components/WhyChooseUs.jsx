@@ -7,56 +7,67 @@ gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
-    title: 'Realistic & Premium',
-    subtitle: 'Looks real, feels real',
+    title: 'Premium Quality',
+    description: 'Finest materials and craftsmanship for a real-touch, natural look that lasts forever.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2C9 2 6.5 4 6.5 7c0 1.5.6 2.8 1.5 3.8C5.5 11.8 4 13.8 4 16h16c0-2.2-1.5-4.2-4-5.2.9-1 1.5-2.3 1.5-3.8C17.5 4 15 2 12 2z" />
+        <path d="M8 16v2a2 2 0 002 2h4a2 2 0 002-2v-2" />
       </svg>
     ),
   },
   {
-    title: 'Long Lasting',
-    subtitle: 'Stays beautiful for years',
+    title: 'Everlasting Beauty',
+    description: 'Designed to stay fresh and vibrant year after year – no watering, no wilting.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M9 12l2 2 4-4" />
       </svg>
     ),
   },
   {
-    title: 'Zero Maintenance',
-    subtitle: 'No watering. No worries.',
+    title: 'Perfect for Every Space',
+    description: 'From homes and offices to events and celebrations – we have the perfect bloom for every corner.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        <path d="M9 22V12h6v10" />
+        <path d="M12 8m-1 0a1 1 0 102 0 1 1 0 10-2 0" />
       </svg>
     ),
   },
   {
-    title: 'Handcrafted',
-    subtitle: 'Made with love & care',
+    title: 'Thoughtful Gifting',
+    description: 'Beautifully arranged bouquets that make every moment truly special.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 12 20 22 4 22 4 12" />
+        <rect x="2" y="7" width="20" height="5" />
+        <line x1="12" y1="22" x2="12" y2="7" />
+        <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z" />
+        <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" />
       </svg>
     ),
   },
   {
-    title: 'Safe Packaging',
-    subtitle: 'Delivered with perfection',
+    title: 'Trusted by Thousands',
+    description: 'Loved by 5,000+ happy customers for our quality, service and reliability.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="M9 12l2 2 4-4" />
       </svg>
     ),
   },
   {
-    title: 'Great for Gifting',
-    subtitle: 'For every occasion',
+    title: 'Sustainable Choice',
+    description: 'Eco-friendly practices and reusable beauty that\'s better for you and the planet.',
     icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 22c1.25-1.25 2.5-2 4-2 3 0 3 2 6 2s3-2 6-2" />
+        <path d="M12 17c0-4-2-7-5-9 0 4 1 7 5 9z" />
+        <path d="M12 17c0-4 2-7 5-9-1 4-2 7-5 9z" />
       </svg>
     ),
   },
@@ -67,95 +78,363 @@ const WhyChooseUs = () => {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
+      // Badge animation
+      gsap.from('.why-badge', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
+        },
+        y: -20,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+      });
+
+      // Heading animation
+      gsap.from('.why-heading > *', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 78%',
+          toggleActions: 'play none none reverse',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power3.out',
+      });
+
+      // Divider + description
+      gsap.from('.why-desc-block > *', {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 75%',
           toggleActions: 'play none none reverse',
         },
-      });
-
-      tl.from('.left-content > *', {
-        x: -50,
+        y: 20,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7,
         stagger: 0.1,
         ease: 'power3.out',
-      })
-      .from(
-        '.feature-card',
-        {
-          x: 50,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
+        delay: 0.3,
+      });
+
+      // Image panel
+      gsap.from('.why-image-panel', {
+        scrollTrigger: {
+          trigger: '.why-content-row',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse',
         },
-        '-=0.6'
-      )
-      .from(
-        '.feature-icon',
-        {
-          scale: 0,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'back.out(1.7)',
+        x: -60,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+      });
+
+      // Feature cards stagger
+      gsap.from('.why-feature-card', {
+        scrollTrigger: {
+          trigger: '.why-content-row',
+          start: 'top 78%',
+          toggleActions: 'play none none reverse',
         },
-        '-=0.6'
-      );
+        y: 40,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power3.out',
+      });
+
+      // Feature icons pop
+      gsap.from('.why-icon-circle', {
+        scrollTrigger: {
+          trigger: '.why-content-row',
+          start: 'top 75%',
+          toggleActions: 'play none none reverse',
+        },
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'back.out(2)',
+        delay: 0.4,
+      });
     },
     { scope: containerRef }
   );
 
   return (
-    <section ref={containerRef} className="py-24 bg-cream overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8 lg:px-16">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
-          {/* Left Content */}
-          <div className="w-full lg:w-2/5 left-content">
-            <span className="text-sm tracking-[0.2em] uppercase text-sage font-semibold mb-4 block">
-              Why Choose Us?
+    <section
+      ref={containerRef}
+      className="why-section"
+      style={{
+        background: 'linear-gradient(135deg, #fdf8f2 0%, #f9f0e6 40%, #fdf6ee 100%)',
+        padding: '80px 0 96px',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      {/* Subtle decorative leaf top-right */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: 260,
+          height: 260,
+          backgroundImage: "url('/images/why-bg-second.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.07,
+          pointerEvents: 'none',
+          borderRadius: '0 0 0 100%',
+        }}
+      />
+
+      <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 24px' }}>
+        {/* ── Section Header ── */}
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          {/* Badge */}
+          <div className="why-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+            <span style={{ display: 'block', width: 28, height: 1, background: 'var(--color-gold)' }} />
+            <span
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 11,
+                letterSpacing: '0.22em',
+                fontWeight: 600,
+                color: 'var(--color-gold)',
+                textTransform: 'uppercase',
+              }}
+            >
+              ✦ &nbsp;Why Anom Flora?&nbsp; ✦
             </span>
-            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-charcoal leading-tight">
-              Quality You Can See,
-            </h2>
-            <div className="font-serif text-4xl lg:text-5xl font-bold italic text-gradient-blush mt-2">
-              Trust You Can Feel.
-            </div>
-            <p className="text-charcoal-light/80 mt-6 text-lg max-w-md">
-              We don't just sell flowers, we deliver happiness, beauty & lasting impressions.
-            </p>
-            <button className="bg-sage-dark text-white px-8 py-3 rounded-full mt-8 hover:bg-sage transition-colors font-medium">
-              Learn More About Us &rarr;
-            </button>
+            <span style={{ display: 'block', width: 28, height: 1, background: 'var(--color-gold)' }} />
           </div>
 
-          {/* Right Feature Grid */}
-          <div className="w-full lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          {/* Heading */}
+          <div className="why-heading">
+            <h2
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(2.2rem, 5vw, 3.6rem)',
+                fontWeight: 700,
+                color: 'var(--color-charcoal)',
+                lineHeight: 1.15,
+                margin: '0 0 4px',
+              }}
+            >
+              More Than Flowers,
+            </h2>
+            <div
+              style={{
+                fontFamily: 'var(--font-script)',
+                fontSize: 'clamp(2rem, 4.5vw, 3.2rem)',
+                background: 'linear-gradient(135deg, var(--color-blush-dark) 0%, var(--color-gold) 50%, var(--color-blush-dark) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                lineHeight: 1.3,
+                margin: 0,
+              }}
+            >
+              It's Our Promise
+            </div>
+          </div>
+
+          {/* Divider + description */}
+          <div className="why-desc-block" style={{ marginTop: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
+              <span style={{ display: 'block', width: 48, height: 1, background: 'var(--color-blush-dark)' }} />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-blush-dark)">
+                <path d="M12 2C9 2 6.5 4.5 6.5 7.5c0 1.8.8 3.4 2 4.5C5.9 13.1 4 15.3 4 18h16c0-2.7-1.9-4.9-4.5-6 1.2-1.1 2-2.7 2-4.5C17.5 4.5 15 2 12 2z"/>
+              </svg>
+              <span style={{ display: 'block', width: 48, height: 1, background: 'var(--color-blush-dark)' }} />
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '1.05rem',
+                color: 'var(--color-warm-gray)',
+                maxWidth: 500,
+                margin: '0 auto',
+                lineHeight: 1.75,
+              }}
+            >
+              At Anom Flora, we believe in creating everlasting beauty
+              with uncompromising quality and a passion for perfection.
+            </p>
+          </div>
+        </div>
+
+        {/* ── Main Content Row ── */}
+        <div
+          className="why-content-row"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.65fr',
+            gap: 36,
+            alignItems: 'stretch',
+          }}
+        >
+          {/* Left – Flower Image Panel */}
+          <div
+            className="why-image-panel"
+            style={{
+              position: 'relative',
+              borderRadius: '28px 28px 120px 28px',
+              overflow: 'hidden',
+              minHeight: 500,
+              boxShadow: '0 24px 60px rgba(196,162,101,0.18), 0 4px 20px rgba(0,0,0,0.06)',
+            }}
+          >
+            <img
+              src="/images/why-bg.png"
+              alt="Anom Flora premium floral arrangement"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                display: 'block',
+              }}
+            />
+            {/* Subtle golden overlay gradient at bottom */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(196,162,101,0.18) 0%, transparent 50%)',
+                pointerEvents: 'none',
+              }}
+            />
+            {/* Curved accent line */}
+            <svg
+              style={{ position: 'absolute', top: 20, right: 20, opacity: 0.35 }}
+              width="80" height="120" viewBox="0 0 80 120" fill="none"
+            >
+              <path d="M70 10 Q80 60 40 110" stroke="#C4A265" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+            </svg>
+          </div>
+
+          {/* Right – Feature Cards Grid */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              gap: 18,
+              alignContent: 'start',
+            }}
+          >
             {features.map((feature, idx) => (
-              <div 
-                key={idx} 
-                className="feature-card glass-card p-6 rounded-2xl flex items-start gap-4 hover-lift"
+              <div
+                key={idx}
+                className="why-feature-card hover-lift"
+                style={{
+                  background: 'rgba(255,255,255,0.82)',
+                  backdropFilter: 'blur(14px)',
+                  WebkitBackdropFilter: 'blur(14px)',
+                  border: '1px solid rgba(255,255,255,0.6)',
+                  borderRadius: 20,
+                  padding: '28px 20px 24px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  gap: 0,
+                  cursor: 'default',
+                  boxShadow: '0 2px 20px rgba(196,162,101,0.07)',
+                }}
               >
-                <div className="feature-icon w-14 h-14 rounded-full bg-blush-light shrink-0 flex items-center justify-center text-sage-dark">
-                  {feature.icon}
+                {/* Icon Circle */}
+                <div
+                  className="why-icon-circle"
+                  style={{
+                    width: 64,
+                    height: 64,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #f5ded5 0%, #ede6db 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: 16,
+                    color: '#6B5E3E',
+                    flexShrink: 0,
+                  }}
+                >
+                  <div style={{ width: 26, height: 26 }}>{feature.icon}</div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-charcoal text-lg mb-1">
-                    {feature.title}
-                  </h4>
-                  <p className="text-sm text-warm-gray">
-                    {feature.subtitle}
-                  </p>
-                </div>
+
+                {/* Title */}
+                <h4
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 700,
+                    fontSize: '0.9rem',
+                    color: 'var(--color-charcoal)',
+                    marginBottom: 8,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {feature.title}
+                </h4>
+
+                {/* Description */}
+                <p
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.77rem',
+                    color: 'var(--color-warm-gray)',
+                    lineHeight: 1.6,
+                    margin: 0,
+                  }}
+                >
+                  {feature.description}
+                </p>
+
+                {/* Bottom accent line */}
+                <div
+                  style={{
+                    marginTop: 16,
+                    width: 32,
+                    height: 2,
+                    borderRadius: 2,
+                    background: 'linear-gradient(90deg, var(--color-blush-dark), var(--color-gold))',
+                  }}
+                />
               </div>
             ))}
           </div>
-
         </div>
       </div>
+
+      {/* Responsive styles */}
+      <style>{`
+        @media (max-width: 900px) {
+          .why-content-row {
+            grid-template-columns: 1fr !important;
+          }
+          .why-image-panel {
+            min-height: 320px !important;
+            border-radius: 24px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .why-content-row > div:last-child {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        @media (max-width: 400px) {
+          .why-content-row > div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        .why-feature-card:hover .why-icon-circle {
+          background: linear-gradient(135deg, #e8c4b8 0%, #d4b87e 100%) !important;
+        }
+      `}</style>
     </section>
   );
 };

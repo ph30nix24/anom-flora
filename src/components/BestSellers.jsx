@@ -1,12 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Heart, ShoppingBag, ArrowRight, Star, Rose, HandHeart, Truck, ShieldCheck } from 'lucide-react';
+import { Heart, ShoppingBag, ArrowRight, Star, Handbag } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { products, trustBadges } from '../utils';
-
-
-gsap.registerPlugin(ScrollTrigger);
 
 const categories = ['All Collection', 'Bouquets', 'Arrangements', 'Potted Plants', 'Centerpieces', 'New Arrivals'];
 
@@ -151,8 +148,8 @@ const BestSellers = () => {
                 {/* Best Seller badge */}
                 {product.isBestSeller && (
                   <div
-                    className="absolute top-3 left-3 px-2.5 py-1.5 rounded-md text-white text-[9px] font-bold tracking-wider leading-tight text-center"
-                    style={{ background: '#C08D34' }}
+                    className="absolute top-0 left-3 h-15 px-1.5 py-1.5 text-white text-[9px] font-bold tracking-wider leading-tight text-center pt-3.5 bg-prime-yellow"
+                    style={{ clipPath: 'polygon(0% 0%, 100% 0, 100% 100%, 50% 80%, 0 100%)' }}
                   >
                     BEST<br/>SELLER
                   </div>
@@ -206,7 +203,7 @@ const BestSellers = () => {
                     className="w-8 h-8 rounded-full flex items-center justify-center text-white shadow-md hover:scale-110 transition-transform duration-200"
                     style={{ background: '#47482D' }}
                   >
-                    <ShoppingBag size={14} />
+                    <Handbag size={14} />
                   </button>
                 </div>
               </div>
