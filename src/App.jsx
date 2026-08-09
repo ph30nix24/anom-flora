@@ -28,6 +28,7 @@ function App() {
         <HeroNew />
         <BestSellers />
         <CustomDiv />
+        <Testimonials />
       </main>
       <Footer />
     </div>
