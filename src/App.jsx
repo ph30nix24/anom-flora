@@ -27,7 +27,6 @@ function App() {
         <CTA /> */}
         <HeroNew />
         <BestSellers />
-        <WhyChooseUs />
         <CustomDiv />
       </main>
       <Footer />

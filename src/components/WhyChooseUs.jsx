@@ -2,76 +2,11 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { features } from '../utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const features = [
-  {
-    title: 'Premium Quality',
-    description: 'Finest materials and craftsmanship for a real-touch, natural look that lasts forever.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2C9 2 6.5 4 6.5 7c0 1.5.6 2.8 1.5 3.8C5.5 11.8 4 13.8 4 16h16c0-2.2-1.5-4.2-4-5.2.9-1 1.5-2.3 1.5-3.8C17.5 4 15 2 12 2z" />
-        <path d="M8 16v2a2 2 0 002 2h4a2 2 0 002-2v-2" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Everlasting Beauty',
-    description: 'Designed to stay fresh and vibrant year after year – no watering, no wilting.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Perfect for Every Space',
-    description: 'From homes and offices to events and celebrations – we have the perfect bloom for every corner.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-        <path d="M9 22V12h6v10" />
-        <path d="M12 8m-1 0a1 1 0 102 0 1 1 0 10-2 0" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Thoughtful Gifting',
-    description: 'Beautifully arranged bouquets that make every moment truly special.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="20 12 20 22 4 22 4 12" />
-        <rect x="2" y="7" width="20" height="5" />
-        <line x1="12" y1="22" x2="12" y2="7" />
-        <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z" />
-        <path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Trusted by Thousands',
-    description: 'Loved by 5,000+ happy customers for our quality, service and reliability.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Sustainable Choice',
-    description: 'Eco-friendly practices and reusable beauty that\'s better for you and the planet.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 22c1.25-1.25 2.5-2 4-2 3 0 3 2 6 2s3-2 6-2" />
-        <path d="M12 17c0-4-2-7-5-9 0 4 1 7 5 9z" />
-        <path d="M12 17c0-4 2-7 5-9-1 4-2 7-5 9z" />
-      </svg>
-    ),
-  },
-];
+
 
 const WhyChooseUs = () => {
   const containerRef = useRef(null);
@@ -364,7 +299,7 @@ const WhyChooseUs = () => {
                     flexShrink: 0,
                   }}
                 >
-                  <div style={{ width: 26, height: 26 }}>{feature.icon}</div>
+                  <div style={{ width: 26, height: 26 }}><img src={feature.icon} alt={feature.title} /></div>
                 </div>
 
                 {/* Title */}

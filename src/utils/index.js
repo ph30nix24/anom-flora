@@ -107,3 +107,37 @@ export const trustBadges = [
     desc: 'Easy returns and 100% customer satisfaction guarantee.',
   },
 ];
+
+
+export const features = [
+  {
+    title: 'Premium Quality',
+    description: 'Finest materials and craftsmanship for a real-touch, natural look that lasts forever.',
+    icon: "./icon/why-flower.png",
+  },
+  {
+    title: 'Everlasting Beauty',
+    description: 'Designed to stay fresh and vibrant year after year – no watering, no wilting.',
+    icon: "./icon/why-leaf.png",
+  },
+  {
+    title: 'Perfect for Every Space',
+    description: 'From homes and offices to events and celebrations – we have the perfect bloom for every corner.',
+    icon: "./icon/why-home.png",
+  },
+  {
+    title: 'Thoughtful Gifting',
+    description: 'Beautifully arranged bouquets that make every moment truly special.',
+    icon: "./icon/why-gift.png",
+  },
+  {
+    title: 'Trusted by Thousands',
+    description: 'Loved by 5,000+ happy customers for our quality, service and reliability.',
+    icon: "./icon/trust.png",
+  },
+  {
+    title: 'Sustainable Choice',
+    description: 'Eco-friendly practices and reusable beauty that\'s better for you and the planet.',
+    icon: "./icon/hand.png",
+  },
+];
