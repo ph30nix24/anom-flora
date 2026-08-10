@@ -5,6 +5,8 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { products, trustBadges } from '../utils';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const categories = ['All Collection', 'Bouquets', 'Arrangements', 'Potted Plants', 'Centerpieces', 'New Arrivals'];
 
 function StarRating({ rating }) {
@@ -24,9 +26,16 @@ function StarRating({ rating }) {
 const BestSellers = () => {
   const [activeCategory, setActiveCategory] = useState('All Collection');
   const [wishlist, setWishlist] = useState([]);
-  const containerRef = useRef(null);
-  const headerRef = useRef(null);
-  const cardsRef = useRef([]);
+  const containerRef  = useRef(null);
+  const headerRef     = useRef(null);
+  const eyebrowRef    = useRef(null);
+  const heading1Ref   = useRef(null);
+  const heading2Ref   = useRef(null);
+  const dividerRef    = useRef(null);
+  const tabsRef       = useRef(null);
+  const cardsRef      = useRef([]);
+  const trustRef      = useRef(null);
+  const badgeRefs     = useRef([]);
 
   const toggleWishlist = (id) => {
     setWishlist((prev) => prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]);
@@ -37,21 +46,58 @@ const BestSellers = () => {
     : products.filter((p) => p.category === activeCategory);
 
   useGSAP(() => {
+    const st = { trigger: containerRef.current, start: 'top 80%' };
+
+    // ── Eyebrow ──
+    gsap.fromTo(eyebrowRef.current,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', scrollTrigger: st }
+    );
+
+    // ── Headings clip-path reveal ──
     gsap.fromTo(
-      headerRef.current,
-      { y: 50, opacity: 0 },
+      [heading1Ref.current, heading2Ref.current],
+      { y: 50, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
       {
-        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: containerRef.current, start: 'top 80%' },
+        y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)',
+        duration: 0.9, stagger: 0.18, ease: 'power3.out',
+        scrollTrigger: { ...st, start: 'top 77%' }
       }
     );
 
+    // ── Divider ──
+    gsap.fromTo(dividerRef.current,
+      { scaleX: 0, opacity: 0, transformOrigin: 'center' },
+      { scaleX: 1, opacity: 1, duration: 0.8, ease: 'power2.inOut',
+        scrollTrigger: { ...st, start: 'top 74%' } }
+    );
+
+    // ── Category tabs slide in ──
+    gsap.fromTo(tabsRef.current,
+      { y: 24, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out',
+        scrollTrigger: { ...st, start: 'top 72%' } }
+    );
+
+    // ── Cards stagger with individual scroll triggers ──
+    cardsRef.current.filter(Boolean).forEach((card, i) => {
+      gsap.fromTo(card,
+        { y: 70, opacity: 0, scale: 0.93 },
+        {
+          y: 0, opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 92%' },
+          delay: (i % 5) * 0.06,
+        }
+      );
+    });
+
+    // ── Trust badges stagger ──
     gsap.fromTo(
-      cardsRef.current.filter(Boolean),
-      { y: 80, opacity: 0, scale: 0.95 },
+      badgeRefs.current.filter(Boolean),
+      { y: 40, opacity: 0, scale: 0.88 },
       {
-        y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: containerRef.current, start: 'top 70%' },
+        y: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.12, ease: 'back.out(1.4)',
+        scrollTrigger: { trigger: trustRef.current, start: 'top 88%' }
       }
     );
   }, { scope: containerRef });
@@ -71,8 +117,8 @@ const BestSellers = () => {
       <div className="container mx-auto px-4 lg:px-8 relative">
 
         {/* ── Header ── */}
-        <div ref={headerRef} className="text-center mb-10">
-          <div className="flex items-center justify-center gap-3 mb-3">
+        <div className="text-center mb-10">
+          <div ref={eyebrowRef} className="flex items-center justify-center gap-3 mb-3">
             <img src="../../icon/leaf-icon.png" className='w-8 -scale-x-90' alt="" />
             <p className="text-xs tracking-[0.25em] uppercase font-semibold" style={{ color: '#C08D34' }}>
               Our Best Sellers
@@ -80,10 +126,10 @@ const BestSellers = () => {
             <img src="../../icon/leaf-icon.png" className='w-8' alt="" />
           </div>
 
-          <h2 className="font-elegant text-center lg:pl-10 text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
+          <h2 ref={heading1Ref} className="font-elegant text-center lg:pl-10 text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
             Handpicked Blooms,
           </h2>
-          <h2 className="font-script text-4xl md:text-5xl lg:text-6xl leading-tight mt-1 text-prime-yellow" >
+          <h2 ref={heading2Ref} className="font-script text-4xl md:text-5xl lg:text-6xl leading-tight mt-1 text-prime-yellow">
             Loved the Most
           </h2>
 
@@ -92,10 +138,10 @@ const BestSellers = () => {
           </p>
 
           {/* Ornamental divider */}
-          <div className="flex items-center justify-center gap-3 mt-5">
+          <div ref={dividerRef} className="flex items-center justify-center gap-3 mt-5">
             <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
             <img src="../../icon/patel-leafs.png" className='w-6' alt="" />
-            <div className="h-px w-16 bg-linear-to-l from-transparent to-primary" ></div>
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-primary"></div>
           </div>
 
           {/* View All — top right */}
@@ -108,7 +154,7 @@ const BestSellers = () => {
         </div>
 
         {/* ── Category Tabs ── */}
-        <div className="flex items-center gap-1 md:gap-2 justify-center flex-wrap mb-10">
+        <div ref={tabsRef} className="flex items-center gap-1 md:gap-2 justify-center flex-wrap mb-10">
           {categories.map((cat, i) => (
             <React.Fragment key={cat}>
               <button
@@ -221,12 +267,17 @@ const BestSellers = () => {
 
         {/* ── Trust Badges ── */}
         <div
+          ref={trustRef}
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 rounded-2xl px-10 py-8 bg-white/60 backdrop-blur-md border border-charcoal/15"
         >
           {trustBadges.map((badge, i) => (
-            <div key={i} className={`flex flex-col items-center text-center gap-3 ${i !== 0 && 'lg:border-l border-charcoal/20 lg:pt-0 lg:pl-6'} ${i > 1 && 'border-t lg:border-t-0 border-charcoal/20 pt-4 lg:pt-0'}`}>
+            <div
+              key={i}
+              ref={el => badgeRefs.current[i] = el}
+              className={`flex flex-col items-center text-center gap-3 ${i !== 0 && 'lg:border-l border-charcoal/20 lg:pt-0 lg:pl-6'} ${i > 1 && 'border-t lg:border-t-0 border-charcoal/20 pt-4 lg:pt-0'}`}
+            >
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center"
+                className="w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
                 style={{ background: 'linear-gradient(135deg, #fdf6ee, #f5ede0)', color: '#47482D', border: '1px solid rgba(196,162,101,0.25)' }}
               >
                 <badge.icon size={20} strokeWidth={1} />

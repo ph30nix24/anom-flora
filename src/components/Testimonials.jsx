@@ -12,9 +12,7 @@ const reviews = [
     stars: 5,
     text: 'The arrangement looks so real and adds the perfect touch of elegance to my living room. Great quality and beautifully packaged!',
     name: 'Priya Sharma',
-    // testimonial_*.jpg files contain the real customer/people photos — use them as avatars
     avatar: '/images/priya_avatar.jpg',
-    // use actual flower arrangement images for the product photo slot
     productImg: '/images/rose_collection.jpg',
   },
   {
@@ -78,30 +76,105 @@ const StarRow = ({ count = 5 }) => (
 
 /* ── Component ───────────────────────────────── */
 const Testimonials = () => {
-  const sectionRef = useRef(null);
-  const headerRef = useRef(null);
-  const cardsRef = useRef([]);
-
+  const sectionRef  = useRef(null);
+  const eyebrowRef  = useRef(null);
+  const headingRef  = useRef(null);
+  const dividerRef  = useRef(null);
+  const subRef      = useRef(null);
+  const cardsRef    = useRef([]);
+  const statsBarRef = useRef(null);
+  const ratingRef   = useRef(null);
+  const statItemsRef= useRef([]);
+  const taglineRef  = useRef(null);
+  const leafLRef    = useRef(null);
+  const leafRRef    = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(
-      headerRef.current,
+    const st = { trigger: sectionRef.current, start: 'top 78%' };
+
+    // ── Decorative leaves drift in ──
+    gsap.fromTo(leafLRef.current,
+      { x: -40, opacity: 0, rotate: -15 },
+      { x: 0, opacity: 0.3, rotate: 0, duration: 1.2, ease: 'power2.out', scrollTrigger: st }
+    );
+    gsap.fromTo(leafRRef.current,
+      { x: 40, opacity: 0, rotate: 15 },
+      { x: 0, opacity: 0.25, rotate: 0, duration: 1.2, ease: 'power2.out', scrollTrigger: st }
+    );
+
+    // ── Eyebrow label ──
+    gsap.fromTo(eyebrowRef.current,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out', scrollTrigger: { ...st, start: 'top 75%' } }
+    );
+
+    // ── Heading clip-path reveal ──
+    gsap.fromTo(headingRef.current,
+      { y: 50, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+      { y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.95, ease: 'power3.out',
+        scrollTrigger: { ...st, start: 'top 72%' } }
+    );
+
+    // ── Divider & sub line ──
+    gsap.fromTo([dividerRef.current, subRef.current],
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: 'power2.out',
+        scrollTrigger: { ...st, start: 'top 68%' } }
+    );
+
+    // ── Review cards — fan in from below ──
+    cardsRef.current.filter(Boolean).forEach((card, i) => {
+      const dir = i === 0 ? -1 : i === 2 ? 1 : 0;
+      gsap.fromTo(card,
+        { y: 70, opacity: 0, rotateX: 10, rotateZ: dir * 4 },
+        {
+          y: 0, opacity: 1, rotateX: 0, rotateZ: 0,
+          duration: 0.95, ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 90%' },
+          delay: i * 0.12,
+        }
+      );
+    });
+
+    // ── Stats bar slides up as a unit ──
+    gsap.fromTo(statsBarRef.current,
       { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: statsBarRef.current, start: 'top 90%' } }
+    );
+
+    // ── Rating number count-up ──
+    gsap.fromTo(ratingRef.current,
+      { innerText: 0 },
       {
-        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
+        innerText: 4.9,
+        duration: 1.6,
+        ease: 'power1.out',
+        snap: { innerText: 0.1 },
+        scrollTrigger: { trigger: statsBarRef.current, start: 'top 90%' },
+        onUpdate() {
+          if (ratingRef.current)
+            ratingRef.current.textContent = parseFloat(ratingRef.current.innerText || 0).toFixed(1);
+        },
       }
     );
 
-    gsap.fromTo(
-      cardsRef.current.filter(Boolean),
-      { y: 80, opacity: 0, scale: 0.95 },
+    // ── Stat icon items pop in ──
+    gsap.fromTo(statItemsRef.current.filter(Boolean),
+      { y: 30, opacity: 0, scale: 0.85 },
       {
-        y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' },
+        y: 0, opacity: 1, scale: 1, duration: 0.65, stagger: 0.1, ease: 'back.out(1.6)',
+        scrollTrigger: { trigger: statsBarRef.current, start: 'top 88%' }
       }
     );
-  });
+
+    // ── Tagline wipes in ──
+    gsap.fromTo(taglineRef.current,
+      { opacity: 0, scaleX: 0.6, transformOrigin: 'center center' },
+      { opacity: 1, scaleX: 1, duration: 1, ease: 'power2.out',
+        scrollTrigger: { trigger: taglineRef.current, start: 'top 92%' } }
+    );
+  }, { scope: sectionRef });
 
   return (
     <section
@@ -110,10 +183,7 @@ const Testimonials = () => {
       className="relative overflow-hidden bg-cream py-20 px-4 md:px-10 lg:px-16"
     >
       {/* ── Decorative leaf top-left ── */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-6 -left-8 opacity-30 select-none"
-      >
+      <div ref={leafLRef} aria-hidden="true" className="pointer-events-none absolute -top-6 -left-8 select-none">
         <svg viewBox="0 0 220 220" className="w-52 h-52" fill="none">
           <path d="M30 190 Q60 120 110 80 Q140 60 180 40" stroke="#4A6741" strokeWidth="2.5" strokeLinecap="round" fill="none" />
           <ellipse cx="110" cy="80" rx="38" ry="18" transform="rotate(-35 110 80)" fill="#6B8F62" opacity="0.55" />
@@ -123,10 +193,7 @@ const Testimonials = () => {
       </div>
 
       {/* ── Decorative branch bottom-right ── */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-8 right-0 opacity-25 select-none"
-      >
+      <div ref={leafRRef} aria-hidden="true" className="pointer-events-none absolute bottom-8 right-0 select-none">
         <svg viewBox="0 0 160 280" className="w-36 h-64" fill="none">
           <path d="M80 270 Q70 180 40 100" stroke="#4A6741" strokeWidth="2" strokeLinecap="round" />
           <ellipse cx="40" cy="100" rx="30" ry="14" transform="rotate(-40 40 100)" fill="#6B8F62" opacity="0.6" />
@@ -138,11 +205,8 @@ const Testimonials = () => {
       <div className="relative max-w-6xl mx-auto">
 
         {/* ════ HEADER ════ */}
-        <div className="t-header text-center mb-14" ref={headerRef}>
-
-
-          {/* Eyebrow label */}
-          <div className="flex items-center justify-center gap-3 mb-3">
+        <div className="text-center mb-14">
+          <div ref={eyebrowRef} className="flex items-center justify-center gap-3 mb-3">
             <img src="../../icon/leaf-icon.png" className='w-8 -scale-x-90' alt="" />
             <p className="text-xs tracking-[0.25em] uppercase font-semibold" style={{ color: '#C08D34' }}>
               Customer Reviews
@@ -150,32 +214,30 @@ const Testimonials = () => {
             <img src="../../icon/leaf-icon.png" className='w-8' alt="" />
           </div>
 
-          {/* Heading */}
-          <h2 className="font-elegant text-4xl lg:text-5xl font-medium text-primary leading-tight mb-4">
+          <h2 ref={headingRef} className="font-elegant text-4xl lg:text-5xl font-medium text-primary leading-tight mb-4">
             Loved by Our Customers
           </h2>
 
-          {/* Floral divider */}
-          <div className="flex items-center justify-center gap-3 pb-3">
+          <div ref={dividerRef} className="flex items-center justify-center gap-3 pb-3">
             <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
             <img src="../../icon/patel-leafs.png" className='w-6' alt="" />
-            <div className="h-px w-16 bg-linear-to-l from-transparent to-primary" ></div>
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-primary"></div>
           </div>
 
-          <p className="font-sans text-[#6B6B5E] text-base lg:text-lg max-w-xl mx-auto">
+          <p ref={subRef} className="font-sans text-[#6B6B5E] text-base lg:text-lg max-w-xl mx-auto">
             Real stories from people who brought Anom Flora into their spaces.
           </p>
         </div>
 
         {/* ════ REVIEW CARDS ════ */}
-        <div className="t-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" style={{ perspective: '800px' }}>
           {reviews.map((r, index) => (
             <div
               key={r.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="t-card group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-marble hover:shadow-xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-marble hover:shadow-xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
             >
-              <div className="shrink-0 absolute top-0 right-0 w-full h-full z-0 rounded-xl overflow-hidden ">
+              <div className="shrink-0 absolute top-0 right-0 w-full h-full z-0 rounded-xl overflow-hidden">
                 <img
                   src={r.productImg}
                   alt="Anom Flora arrangement"
@@ -184,74 +246,51 @@ const Testimonials = () => {
               </div>
               <div className='size-full absolute bg-black/70 top-0 left-0 z-2'></div>
 
-              <div className="relative z-10 ">
-                <span
-                  aria-hidden="true"
-                  className="absolute top-2 right-4 font-serif text-8xl leading-none text-marble/80 select-none pointer-events-none"
-                >
-                  "
-                </span>
-
-                {/* Stars */}
-                <div className="mb-4">
-                  <StarRow count={r.stars} />
-                </div>
-
-                {/* Text + Product image */}
+              <div className="relative z-10">
+                <span aria-hidden="true" className="absolute top-2 right-4 font-serif text-8xl leading-none text-marble/80 select-none pointer-events-none">"</span>
+                <div className="mb-4"><StarRow count={r.stars} /></div>
                 <div className="flex gap-4 mb-6">
-                  <p className="font-sans text-white text-sm leading-relaxed flex-1 pr-30 md:pr-0 lg:pr-30">
-                    {r.text}
-                  </p>
-
+                  <p className="font-sans text-white text-sm leading-relaxed flex-1 pr-30 md:pr-0 lg:pr-30">{r.text}</p>
                 </div>
-
-                {/* Reviewer */}
                 <div className="flex items-center gap-3 pt-4 border-t border-marble">
-                  <img
-                    src={r.avatar}
-                    alt={r.name}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-gold/40 shrink-0"
-                  />
+                  <img src={r.avatar} alt={r.name} className="w-10 h-10 rounded-full object-cover border-2 border-gold/40 shrink-0" />
                   <div>
                     <p className="font-sans font-semibold text-sm text-warm-white">{r.name}</p>
                     <div className="flex items-center gap-1 mt-0.5">
                       <svg viewBox="0 0 20 20" fill="#C4A265" className="w-3.5 h-3.5 shrink-0">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5Z" clipRule="evenodd" />
                       </svg>
-                      <span className="font-sans text-[10px] text-warm-gray tracking-wide">
-                        Verified Buyer
-                      </span>
+                      <span className="font-sans text-[10px] text-warm-gray tracking-wide">Verified Buyer</span>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* Decorative giant quote mark */}
-
             </div>
           ))}
         </div>
 
         {/* ════ STATS BAR ════ */}
-        <div className="t-stats-row bg-white/60 backdrop-blur-sm rounded-2xl border border-marble px-8 py-4 md:py-8 flex flex-col md:flex-row items-center gap-2 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-marble">
-
+        <div
+          ref={statsBarRef}
+          className="bg-white/60 backdrop-blur-sm rounded-2xl border border-marble px-8 py-4 md:py-8 flex flex-col md:flex-row items-center gap-2 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-marble"
+        >
           {/* Rating block */}
-          <div className="t-stat flex flex-col items-center md:items-start lg:pr-12 gap-1.5 w-full md:w-auto py-4 md:py-0">
+          <div className="flex flex-col items-center md:items-start lg:pr-12 gap-1.5 w-full md:w-auto py-4 md:py-0">
             <div className="flex items-end gap-1">
-              <span className="font-serif text-5xl font-bold text-charcoal leading-none">4.9</span>
+              <span ref={ratingRef} className="font-serif text-5xl font-bold text-charcoal leading-none">4.9</span>
               <span className="font-serif text-2xl text-warm-gray mb-0.5">/5</span>
             </div>
             <StarRow count={5} />
-            <p className="font-sans text-xs text-warm-gray mt-1 tracking-wide">
-              From 2,500+ Happy Customers
-            </p>
+            <p className="font-sans text-xs text-warm-gray mt-1 tracking-wide">From 2,500+ Happy Customers</p>
           </div>
 
-          {/* Feature icons */}
+          {/* Stat icons */}
           <div className='flex lg:flex-1 md:pr-12 w-full md:w-auto flex-row items-center gap-8 md:gap-0 md:divide-y-0 md:divide-x divide-marble'>
             {stats.map((s, i) => (
               <div
                 key={i}
-                className="t-stat flex flex-col items-center text-center md:flex-1 md:px-8 gap-3 py-4 md:py-0"
+                ref={el => statItemsRef.current[i] = el}
+                className="flex flex-col items-center text-center md:flex-1 md:px-8 gap-3 py-4 md:py-0"
               >
                 <div className="w-13 h-13 rounded-full border border-gold/35 flex items-center justify-center text-gold bg-cream p-3">
                   {s.icon}
@@ -266,7 +305,7 @@ const Testimonials = () => {
         </div>
 
         {/* ════ FOOTER TAGLINE ════ */}
-        <div className="t-tagline text-center mt-12">
+        <div ref={taglineRef} className="text-center mt-12">
           <div className="flex items-center justify-center gap-4">
             <span className="h-px w-24 bg-gold/40" />
             <p className="font-elegant italic text-warm-gray text-base lg:text-lg whitespace-nowrap">
