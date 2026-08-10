@@ -13,7 +13,7 @@ const reviews = [
     text: 'The arrangement looks so real and adds the perfect touch of elegance to my living room. Great quality and beautifully packaged!',
     name: 'Priya Sharma',
     // testimonial_*.jpg files contain the real customer/people photos — use them as avatars
-    avatar: '/images/testimonial_1.jpg',
+    avatar: '/images/priya_avatar.jpg',
     // use actual flower arrangement images for the product photo slot
     productImg: '/images/rose_collection.jpg',
   },
@@ -22,7 +22,7 @@ const reviews = [
     stars: 5,
     text: 'Anom Flora never disappoints! The flowers are stunning, long-lasting, and make my dining space feel so warm and inviting.',
     name: 'Rohit Mehta',
-    avatar: '/images/testimonial_2.jpg',
+    avatar: '/images/rohit_avatar.jpg',
     productImg: '/images/mixed_bouquet.jpg',
   },
   {
@@ -30,7 +30,7 @@ const reviews = [
     stars: 5,
     text: 'Beautiful craftsmanship and premium quality. It completely transformed the look of my office reception area.',
     name: 'Neha Verma',
-    avatar: '/images/testimonial_3.jpg',
+    avatar: '/images/neha_avatar.jpg',
     productImg: '/images/lily_collection.jpg',
   },
 ];
@@ -107,7 +107,7 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       id="customer-reviews"
-      className="relative overflow-hidden bg-[#F5EDE0] py-20 px-4 md:px-10 lg:px-16"
+      className="relative overflow-hidden bg-cream-dark py-20 px-4 md:px-10 lg:px-16"
     >
       {/* ── Decorative leaf top-left ── */}
       <div
@@ -151,25 +151,15 @@ const Testimonials = () => {
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-[#2C2C2C] leading-tight mb-4">
+          <h2 className="font-elegant text-4xl lg:text-5xl font-medium text-primary leading-tight mb-4">
             Loved by Our Customers
           </h2>
 
           {/* Floral divider */}
-          <div className="flex items-center justify-center gap-2 mb-5">
-            <span className="h-px w-16 bg-[#C4A265]/50" />
-            <svg viewBox="0 0 28 28" className="w-6 h-6 text-[#C4A265]" fill="currentColor">
-              <circle cx="14" cy="14" r="3" />
-              <ellipse cx="14" cy="6" rx="3" ry="5" />
-              <ellipse cx="14" cy="22" rx="3" ry="5" />
-              <ellipse cx="6" cy="14" rx="5" ry="3" />
-              <ellipse cx="22" cy="14" rx="5" ry="3" />
-              <ellipse cx="8.5" cy="8.5" rx="3" ry="5" transform="rotate(-45 8.5 8.5)" />
-              <ellipse cx="19.5" cy="8.5" rx="3" ry="5" transform="rotate(45 19.5 8.5)" />
-              <ellipse cx="8.5" cy="19.5" rx="3" ry="5" transform="rotate(45 8.5 19.5)" />
-              <ellipse cx="19.5" cy="19.5" rx="3" ry="5" transform="rotate(-45 19.5 19.5)" />
-            </svg>
-            <span className="h-px w-16 bg-[#C4A265]/50" />
+          <div className="flex items-center justify-center gap-3 pb-3">
+            <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
+            <img src="../../icon/patel-leafs.png" className='w-6' alt="" />
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-primary" ></div>
           </div>
 
           <p className="font-sans text-[#6B6B5E] text-base lg:text-lg max-w-xl mx-auto">
@@ -183,69 +173,75 @@ const Testimonials = () => {
             <div
               key={r.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="t-card group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-[#EDE6DB] hover:shadow-xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
+              className="t-card group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-marble hover:shadow-xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
             >
-              {/* Decorative giant quote mark */}
-              <span
-                aria-hidden="true"
-                className="absolute top-2 right-4 font-serif text-8xl leading-none text-[#EDE6DB]/80 select-none pointer-events-none"
-              >
-                "
-              </span>
-
-              {/* Stars */}
-              <div className="mb-4">
-                <StarRow count={r.stars} />
-              </div>
-
-              {/* Text + Product image */}
-              <div className="flex gap-4 mb-6">
-                <p className="font-sans text-[#3A3A30] text-sm leading-relaxed flex-1">
-                  {r.text}
-                </p>
-                <div className="shrink-0 w-28 h-28 rounded-xl overflow-hidden border border-[#EDE6DB] shadow-sm">
-                  <img
-                    src={r.productImg}
-                    alt="Anom Flora arrangement"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-              </div>
-
-              {/* Reviewer */}
-              <div className="flex items-center gap-3 pt-4 border-t border-[#EDE6DB]">
+              <div className="shrink-0 absolute top-0 right-0 w-full h-full z-0 rounded-xl overflow-hidden ">
                 <img
-                  src={r.avatar}
-                  alt={r.name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-[#C4A265]/40 shrink-0"
+                  src={r.productImg}
+                  alt="Anom Flora arrangement"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 z-1 object-top-right"
                 />
-                <div>
-                  <p className="font-sans font-semibold text-sm text-[#2C2C2C]">{r.name}</p>
-                  <div className="flex items-center gap-1 mt-0.5">
-                    <svg viewBox="0 0 20 20" fill="#C4A265" className="w-3.5 h-3.5 shrink-0">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5Z" clipRule="evenodd" />
-                    </svg>
-                    <span className="font-sans text-[10px] text-[#9B9590] tracking-wide">
-                      Verified Buyer
-                    </span>
+              </div>
+                <div className='size-full absolute bg-black/70 top-0 left-0 z-2'></div>
+
+              <div className="relative z-10 ">
+                <span
+                  aria-hidden="true"
+                  className="absolute top-2 right-4 font-serif text-8xl leading-none text-marble/80 select-none pointer-events-none"
+                >
+                  "
+                </span>
+
+                {/* Stars */}
+                <div className="mb-4">
+                  <StarRow count={r.stars} />
+                </div>
+
+                {/* Text + Product image */}
+                <div className="flex gap-4 mb-6">
+                  <p className="font-sans text-white text-sm leading-relaxed flex-1 pr-30 md:pr-0 lg:pr-30">
+                    {r.text}
+                  </p>
+
+                </div>
+
+                {/* Reviewer */}
+                <div className="flex items-center gap-3 pt-4 border-t border-marble">
+                  <img
+                    src={r.avatar}
+                    alt={r.name}
+                    className="w-10 h-10 rounded-full object-cover border-2 border-gold/40 shrink-0"
+                  />
+                  <div>
+                    <p className="font-sans font-semibold text-sm text-warm-white">{r.name}</p>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <svg viewBox="0 0 20 20" fill="#C4A265" className="w-3.5 h-3.5 shrink-0">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5Z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-sans text-[10px] text-warm-gray tracking-wide">
+                        Verified Buyer
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
+              {/* Decorative giant quote mark */}
+
             </div>
           ))}
         </div>
 
         {/* ════ STATS BAR ════ */}
-        <div className="t-stats-row bg-white/60 backdrop-blur-sm rounded-2xl border border-[#EDE6DB] px-8 py-8 flex flex-col md:flex-row items-center gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-[#EDE6DB]">
+        <div className="t-stats-row bg-white/60 backdrop-blur-sm rounded-2xl border border-marble px-8 py-8 flex flex-col md:flex-row items-center gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-marble">
 
           {/* Rating block */}
           <div className="t-stat flex flex-col items-center md:items-start md:pr-12 gap-1.5 w-full md:w-auto py-4 md:py-0">
             <div className="flex items-end gap-1">
-              <span className="font-serif text-5xl font-bold text-[#2C2C2C] leading-none">4.9</span>
-              <span className="font-serif text-2xl text-[#9B9590] mb-0.5">/5</span>
+              <span className="font-serif text-5xl font-bold text-charcoal leading-none">4.9</span>
+              <span className="font-serif text-2xl text-warm-gray mb-0.5">/5</span>
             </div>
             <StarRow count={5} />
-            <p className="font-sans text-xs text-[#9B9590] mt-1 tracking-wide">
+            <p className="font-sans text-xs text-warm-gray mt-1 tracking-wide">
               From 2,500+ Happy Customers
             </p>
           </div>
@@ -256,12 +252,12 @@ const Testimonials = () => {
               key={i}
               className="t-stat flex flex-col items-center text-center md:flex-1 md:px-8 gap-3 py-4 md:py-0"
             >
-              <div className="w-13 h-13 rounded-full border border-[#C4A265]/35 flex items-center justify-center text-[#C4A265] bg-[#FDF6EE] p-3">
+              <div className="w-13 h-13 rounded-full border border-gold/35 flex items-center justify-center text-gold bg-cream p-3">
                 {s.icon}
               </div>
               <div>
-                <p className="font-sans font-semibold text-sm text-[#2C2C2C]">{s.label}</p>
-                <p className="font-sans text-xs text-[#9B9590] mt-0.5">{s.sub}</p>
+                <p className="font-sans font-semibold text-sm text-charcoal">{s.label}</p>
+                <p className="font-sans text-xs text-warm-gray mt-0.5">{s.sub}</p>
               </div>
             </div>
           ))}
@@ -270,11 +266,11 @@ const Testimonials = () => {
         {/* ════ FOOTER TAGLINE ════ */}
         <div className="t-tagline text-center mt-12">
           <div className="flex items-center justify-center gap-4">
-            <span className="h-px w-24 bg-[#C4A265]/40" />
-            <p className="font-elegant italic text-[#6B6B5E] text-base lg:text-lg whitespace-nowrap">
+            <span className="h-px w-24 bg-gold/40" />
+            <p className="font-elegant italic text-warm-gray text-base lg:text-lg whitespace-nowrap">
               Thousands of homes and hearts, beautifully served.
             </p>
-            <span className="h-px w-24 bg-[#C4A265]/40" />
+            <span className="h-px w-24 bg-gold/40" />
           </div>
         </div>
 

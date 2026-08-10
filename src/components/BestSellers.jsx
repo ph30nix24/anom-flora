@@ -221,11 +221,10 @@ const BestSellers = () => {
 
         {/* ── Trust Badges ── */}
         <div
-          className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 rounded-2xl px-10 py-8"
-          style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(12px)', border: '1px solid rgba(196,162,101,0.15)' }}
+          className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 rounded-2xl px-10 py-8 bg-white/60 backdrop-blur-md border border-charcoal/15"
         >
           {trustBadges.map((badge, i) => (
-            <div key={i} className={`flex flex-col items-center text-center gap-3 ${i !== 0 && 'lg:border-l border-charcoal/20 pt-4 lg:pt-0 lg:pl-6'} ${i > 1 && 'border-t lg:border-t-0 border-charcoal/20 pt-4 lg:pt-0'}`}>
+            <div key={i} className={`flex flex-col items-center text-center gap-3 ${i !== 0 && 'lg:border-l border-charcoal/20 lg:pt-0 lg:pl-6'} ${i > 1 && 'border-t lg:border-t-0 border-charcoal/20 pt-4 lg:pt-0'}`}>
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center"
                 style={{ background: 'linear-gradient(135deg, #fdf6ee, #f5ede0)', color: '#47482D', border: '1px solid rgba(196,162,101,0.25)' }}
