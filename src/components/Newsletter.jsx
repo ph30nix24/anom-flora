@@ -169,7 +169,7 @@ export default function Newsletter() {
               </form>
 
               <div ref={noteRef} className="flex items-center gap-2 lg:pl-10 w-full">
-                <div className="flex items-center justify-center w-5 h-5 rounded-full bg-[#C08D34]">
+                <div className="flex items-center justify-center w-5 h-5 rounded-full bg-prime-yellow">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
@@ -216,7 +216,7 @@ export default function Newsletter() {
                 ref={el => featureRefs.current[i] = el}
                 className={`flex items-center lg:items-start md:flex-col lg:flex-row gap-4 md:gap-2 lg:gap-4 ${card.padding} group`}
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-full border border-[#E2D8CE] bg-[#FAF4EC] flex items-center justify-center group-hover:border-[#C08D34] transition-colors duration-300 group-hover:scale-110 transition-transform">
+                <div className="shrink-0 w-12 h-12 rounded-full border border-[#E2D8CE] bg-[#FAF4EC] flex items-center justify-center group-hover:border-prime-yellow transition duration-300 group-hover:scale-110 transition">
                   <img src={card.icon} alt="" />
                 </div>
                 <div>

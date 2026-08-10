@@ -107,10 +107,10 @@ const BestSellers = () => {
 
       {/* Decorative botanical silhouettes */}
       <div className="absolute bottom-0 left-0 w-48 lg:w-64 h-full pointer-events-none select-none opacity-10 scale-x-[-1] -translate-x-3/10 -translate-y-1/4 " aria-hidden="true">
-        <img src="../../images/flower-one.png" className='size-full object-contain'/>
+        <img src="../../images/flower-one.webp" className='size-full object-contain'/>
       </div>
       <div className="absolute top-0 right-0 translate-x-3/10 -translate-y-1/4 w-48 lg:w-94 h-full pointer-events-none select-none opacity-20" aria-hidden="true">
-        <img src="../../images/flower-one.png" className='size-full object-contain'/>
+        <img src="../../images/flower-one.webp" className='size-full object-contain'/>
       </div>
       
 

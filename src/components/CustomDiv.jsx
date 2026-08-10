@@ -83,6 +83,8 @@ const CustomDiv = () => {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-[#f8f1e7]">
+      <img src="../../images/flower-one.webp" className='size-45 rotate-12  absolute z-50 scale-x-[-1] bottom-0 left-2/10 translate-y-1/10 opacity-50 select-none pointer-events-none translate-x-1/2' alt="" />
+      <img src="../../images/flower-two.webp" className='size-100  absolute z-50 top-0 right-0 translate-x-4/10 translate-y-1/10 opacity-30 select-none pointer-events-none ' alt="" />
 
       {/* FLOWER IMAGE */}
       <div ref={imageRef} className="absolute inset-y-0 left-0 w-1/2 lg:w-[35%] max-md:hidden">

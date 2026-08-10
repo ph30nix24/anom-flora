@@ -41,11 +41,11 @@ const Testimonials = () => {
     // ── Decorative leaves drift in ──
     gsap.fromTo(leafLRef.current,
       { x: -40, opacity: 0, rotate: -15 },
-      { x: 0, opacity: 0.3, rotate: 0, duration: 1.2, ease: 'power2.out', scrollTrigger: st }
+      { x: 0, opacity: 0.8, rotate: 0, duration: 1.2, ease: 'power2.out', scrollTrigger: st }
     );
     gsap.fromTo(leafRRef.current,
       { x: 40, opacity: 0, rotate: 15 },
-      { x: 0, opacity: 0.25, rotate: 0, duration: 1.2, ease: 'power2.out', scrollTrigger: st }
+      { x: 0, opacity: 1, rotate: 0, duration: 1.2, ease: 'power2.out', scrollTrigger: st }
     );
 
     // ── Eyebrow label ──
@@ -129,13 +129,8 @@ const Testimonials = () => {
       className="relative overflow-hidden bg-cream py-20 px-4 md:px-10 lg:px-16"
     >
       {/* ── Decorative leaf top-left ── */}
-      <div ref={leafLRef} aria-hidden="true" className="pointer-events-none absolute -top-6 -left-8 select-none">
-        <svg viewBox="0 0 220 220" className="w-52 h-52" fill="none">
-          <path d="M30 190 Q60 120 110 80 Q140 60 180 40" stroke="#4A6741" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-          <ellipse cx="110" cy="80" rx="38" ry="18" transform="rotate(-35 110 80)" fill="#6B8F62" opacity="0.55" />
-          <ellipse cx="70" cy="130" rx="30" ry="14" transform="rotate(-20 70 130)" fill="#6B8F62" opacity="0.45" />
-          <ellipse cx="150" cy="55" rx="24" ry="11" transform="rotate(-45 150 55)" fill="#6B8F62" opacity="0.4" />
-        </svg>
+      <div ref={leafLRef} aria-hidden="true" className="pointer-events-none absolute top-0 -left-8 select-none opacity-100 z-10">
+        <img src="../../images/test-bg.webp" className='size-100 object-contain drop-shadow-lg' alt="" />
       </div>
 
       {/* ── Decorative branch bottom-right ── */}
