@@ -6,6 +6,7 @@ import BestSellers from './components/BestSellers'
 import Collections from './components/Collections'
 import WhyChooseUs from './components/WhyChooseUs'
 import Testimonials from './components/Testimonials'
+import Newsletter from './components/Newsletter'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 import CustomDiv from './components/CustomDiv'
@@ -20,15 +21,11 @@ function App() {
     <div>
       <Navbar />
       <main>
-        {/* <Hero />
-        <Collections />
-        <WhyChooseUs />
-        <Testimonials />
-        <CTA /> */}
         <HeroNew />
         <BestSellers />
         <CustomDiv />
         <Testimonials />
+        <Newsletter />
       </main>
       <Footer />
     </div>

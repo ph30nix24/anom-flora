@@ -107,7 +107,7 @@ const Testimonials = () => {
     <section
       ref={sectionRef}
       id="customer-reviews"
-      className="relative overflow-hidden bg-cream-dark py-20 px-4 md:px-10 lg:px-16"
+      className="relative overflow-hidden bg-cream py-20 px-4 md:px-10 lg:px-16"
     >
       {/* ── Decorative leaf top-left ── */}
       <div
@@ -182,7 +182,7 @@ const Testimonials = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 z-1 object-top-right"
                 />
               </div>
-                <div className='size-full absolute bg-black/70 top-0 left-0 z-2'></div>
+              <div className='size-full absolute bg-black/70 top-0 left-0 z-2'></div>
 
               <div className="relative z-10 ">
                 <span
@@ -232,10 +232,10 @@ const Testimonials = () => {
         </div>
 
         {/* ════ STATS BAR ════ */}
-        <div className="t-stats-row bg-white/60 backdrop-blur-sm rounded-2xl border border-marble px-8 py-8 flex flex-col md:flex-row items-center gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-marble">
+        <div className="t-stats-row bg-white/60 backdrop-blur-sm rounded-2xl border border-marble px-8 py-4 md:py-8 flex flex-col md:flex-row items-center gap-2 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-marble">
 
           {/* Rating block */}
-          <div className="t-stat flex flex-col items-center md:items-start md:pr-12 gap-1.5 w-full md:w-auto py-4 md:py-0">
+          <div className="t-stat flex flex-col items-center md:items-start lg:pr-12 gap-1.5 w-full md:w-auto py-4 md:py-0">
             <div className="flex items-end gap-1">
               <span className="font-serif text-5xl font-bold text-charcoal leading-none">4.9</span>
               <span className="font-serif text-2xl text-warm-gray mb-0.5">/5</span>
@@ -247,20 +247,22 @@ const Testimonials = () => {
           </div>
 
           {/* Feature icons */}
-          {stats.map((s, i) => (
-            <div
-              key={i}
-              className="t-stat flex flex-col items-center text-center md:flex-1 md:px-8 gap-3 py-4 md:py-0"
-            >
-              <div className="w-13 h-13 rounded-full border border-gold/35 flex items-center justify-center text-gold bg-cream p-3">
-                {s.icon}
+          <div className='flex lg:flex-1 md:pr-12 w-full md:w-auto flex-row items-center gap-8 md:gap-0 md:divide-y-0 md:divide-x divide-marble'>
+            {stats.map((s, i) => (
+              <div
+                key={i}
+                className="t-stat flex flex-col items-center text-center md:flex-1 md:px-8 gap-3 py-4 md:py-0"
+              >
+                <div className="w-13 h-13 rounded-full border border-gold/35 flex items-center justify-center text-gold bg-cream p-3">
+                  {s.icon}
+                </div>
+                <div>
+                  <p className="font-sans font-semibold text-sm text-charcoal">{s.label}</p>
+                  <p className="font-sans text-xs text-warm-gray mt-0.5 max-md:hidden">{s.sub}</p>
+                </div>
               </div>
-              <div>
-                <p className="font-sans font-semibold text-sm text-charcoal">{s.label}</p>
-                <p className="font-sans text-xs text-warm-gray mt-0.5">{s.sub}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* ════ FOOTER TAGLINE ════ */}

@@ -99,7 +99,7 @@ const BestSellers = () => {
           </div>
 
           {/* View All — top right */}
-          <div className="flex justify-end mt-[-2.5rem] max-md:hidden">
+          <div className="flex justify-end -mt-10 max-md:hidden">
             <button className="flex items-center gap-2 text-sm font-medium text-charcoal border border-charcoal/30 px-5 py-2.5 rounded-full hover:bg-charcoal hover:text-white transition-all duration-300 group">
               View All Collection
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -138,7 +138,7 @@ const BestSellers = () => {
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
             >
               {/* Image area */}
-              <div className="relative overflow-hidden aspect-[4/5]">
+              <div className="relative overflow-hidden aspect-4/5">
                 <img
                   src={product.image}
                   alt={product.name}
