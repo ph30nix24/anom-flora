@@ -87,7 +87,7 @@ const CustomDiv = () => {
       {/* FLOWER IMAGE */}
       <div ref={imageRef} className="absolute inset-y-0 left-0 w-1/2 lg:w-[35%] max-md:hidden">
         <img
-          src="../../images/why-bg.png"
+          src="../../images/why-bg.webp"
           alt="Anom Flora"
           className="h-full w-full object-cover"
         />
@@ -148,11 +148,11 @@ const CustomDiv = () => {
 
           {/* Eyebrow */}
           <div ref={eyebrowRef} className="flex items-center justify-center lg:justify-start gap-3 mb-3 lg:pl-38">
-            <img src="../../icon/leaf-icon.png" className='w-8 -scale-x-90' alt="" />
+            <img src="../../icon/leaf-icon.webp" className='w-8 -scale-x-90' alt="" />
             <p className="text-xs tracking-[0.25em] uppercase font-semibold" style={{ color: '#C08D34' }}>
               Why Anom Flora?
             </p>
-            <img src="../../icon/leaf-icon.png" className='w-8' alt="" />
+            <img src="../../icon/leaf-icon.webp" className='w-8' alt="" />
           </div>
 
           <h2 ref={heading1Ref} className="font-elegant text-center lg:text-start text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
@@ -164,7 +164,7 @@ const CustomDiv = () => {
 
           <div ref={dividerRef} className="flex items-center justify-center lg:justify-start gap-3 mt-5 lg:pl-50">
             <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
-            <img src="../../icon/patel-leafs.png" className='w-6' alt="" />
+            <img src="../../icon/patel-leafs.webp" className='w-6' alt="" />
             <div className="h-px w-16 bg-linear-to-l from-transparent to-primary"></div>
           </div>
 

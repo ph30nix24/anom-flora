@@ -2,66 +2,12 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { reviews, stats } from '../utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── Data ─────────────────────────────────────── */
-const reviews = [
-  {
-    id: 1,
-    stars: 5,
-    text: 'The arrangement looks so real and adds the perfect touch of elegance to my living room. Great quality and beautifully packaged!',
-    name: 'Priya Sharma',
-    avatar: '/images/priya_avatar.jpg',
-    productImg: '/images/rose_collection.jpg',
-  },
-  {
-    id: 2,
-    stars: 5,
-    text: 'Anom Flora never disappoints! The flowers are stunning, long-lasting, and make my dining space feel so warm and inviting.',
-    name: 'Rohit Mehta',
-    avatar: '/images/rohit_avatar.jpg',
-    productImg: '/images/mixed_bouquet.jpg',
-  },
-  {
-    id: 3,
-    stars: 5,
-    text: 'Beautiful craftsmanship and premium quality. It completely transformed the look of my office reception area.',
-    name: 'Neha Verma',
-    avatar: '/images/neha_avatar.jpg',
-    productImg: '/images/lily_collection.jpg',
-  },
-];
 
-const stats = [
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-      </svg>
-    ),
-    label: 'Beautiful Designs',
-    sub: 'That suit every space',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-      </svg>
-    ),
-    label: 'Premium Quality',
-    sub: 'Made to last, made to love',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-7 h-7">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
-      </svg>
-    ),
-    label: 'Loved & Trusted',
-    sub: 'By thousands of customers',
-  },
-];
 
 /* ── Star Row ─────────────────────────────────── */
 const StarRow = ({ count = 5 }) => (
@@ -207,11 +153,11 @@ const Testimonials = () => {
         {/* ════ HEADER ════ */}
         <div className="text-center mb-14">
           <div ref={eyebrowRef} className="flex items-center justify-center gap-3 mb-3">
-            <img src="../../icon/leaf-icon.png" className='w-8 -scale-x-90' alt="" />
+            <img src="../../icon/leaf-icon.webp" className='w-8 -scale-x-90' alt="" />
             <p className="text-xs tracking-[0.25em] uppercase font-semibold" style={{ color: '#C08D34' }}>
               Customer Reviews
             </p>
-            <img src="../../icon/leaf-icon.png" className='w-8' alt="" />
+            <img src="../../icon/leaf-icon.webp" className='w-8' alt="" />
           </div>
 
           <h2 ref={headingRef} className="font-elegant text-4xl lg:text-5xl font-medium text-primary leading-tight mb-4">
@@ -220,7 +166,7 @@ const Testimonials = () => {
 
           <div ref={dividerRef} className="flex items-center justify-center gap-3 pb-3">
             <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
-            <img src="../../icon/patel-leafs.png" className='w-6' alt="" />
+            <img src="../../icon/patel-leafs.webp" className='w-6' alt="" />
             <div className="h-px w-16 bg-linear-to-l from-transparent to-primary"></div>
           </div>
 
@@ -293,7 +239,7 @@ const Testimonials = () => {
                 className="flex flex-col items-center text-center md:flex-1 md:px-8 gap-3 py-4 md:py-0"
               >
                 <div className="w-13 h-13 rounded-full border border-gold/35 flex items-center justify-center text-gold bg-cream p-3">
-                  {s.icon}
+                  <s.icon />
                 </div>
                 <div>
                   <p className="font-sans font-semibold text-sm text-charcoal">{s.label}</p>

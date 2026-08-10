@@ -99,7 +99,7 @@ const HeroNew = () => {
 
           <div ref={lineRef} className='flex items-center mt-5 lg:mt-10 gap-4'>
             <div className='w-25 h-px rounded-full bg-primary/60'></div>
-            <img src="./icon/leaf-icon.png" className='w-10 pb-1.5' alt="" />
+            <img src="./icon/leaf-icon.webp" className='w-10 pb-1.5' alt="" />
           </div>
 
           <p ref={subRef} className='text-sm md:text-base lg:text-[18px] text-primary font-sans leading-relaxed mt-5'>
@@ -131,9 +131,9 @@ const HeroNew = () => {
           {/* Image stack */}
           <div className='w-full lg:w-2/5 h-fit pt-10 md:pt-20 flex justify-center lg:justify-end items-center gap-5'>
             {[
-              { src: './images/bouquets_category.jpg',       alt: 'Bouquets' },
-              { src: './images/mixed_bouquet.jpg',           alt: 'Mixed Bouquet' },
-              { src: './images/potted_plants_category.jpg',  alt: 'Potted Plants' },
+              { src: './images/bouquets_category.webp',       alt: 'Bouquets' },
+              { src: './images/mixed_bouquet.webp',           alt: 'Mixed Bouquet' },
+              { src: './images/potted_plants_category.webp',  alt: 'Potted Plants' },
             ].map((img, i) => (
               <div key={i} ref={el => imagesRef.current[i] = el} className='w-1/3 lg:w-1/4 rounded-xl shadow-lg overflow-hidden'>
                 <img src={img.src} alt={img.alt} className='w-full object-cover hover:scale-110 transition-transform duration-300' />

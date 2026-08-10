@@ -119,17 +119,17 @@ const BestSellers = () => {
         {/* ── Header ── */}
         <div className="text-center mb-10">
           <div ref={eyebrowRef} className="flex items-center justify-center gap-3 mb-3">
-            <img src="../../icon/leaf-icon.png" className='w-8 -scale-x-90' alt="" />
+            <img src="../../icon/leaf-icon.webp" className='w-8 -scale-x-90' alt="" />
             <p className="text-xs tracking-[0.25em] uppercase font-semibold" style={{ color: '#C08D34' }}>
               Our Best Sellers
             </p>
-            <img src="../../icon/leaf-icon.png" className='w-8' alt="" />
+            <img src="../../icon/leaf-icon.webp" className='w-8' alt="" />
           </div>
 
           <h2 ref={heading1Ref} className="font-elegant text-center lg:pl-10 text-4xl md:text-5xl lg:text-6xl font-medium text-primary leading-tight">
             Handpicked Blooms,
           </h2>
-          <h2 ref={heading2Ref} className="font-script text-4xl md:text-5xl lg:text-6xl leading-tight mt-1 text-prime-yellow">
+          <h2 ref={heading2Ref} className="font-script text-4xl md:text-5xl lg:text-6xl leading-normal mt-1 text-prime-yellow">
             Loved the Most
           </h2>
 
@@ -140,7 +140,7 @@ const BestSellers = () => {
           {/* Ornamental divider */}
           <div ref={dividerRef} className="flex items-center justify-center gap-3 mt-5">
             <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
-            <img src="../../icon/patel-leafs.png" className='w-6' alt="" />
+            <img src="../../icon/patel-leafs.webp" className='w-6' alt="" />
             <div className="h-px w-16 bg-linear-to-l from-transparent to-primary"></div>
           </div>
 

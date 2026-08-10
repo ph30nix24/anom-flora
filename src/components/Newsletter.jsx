@@ -106,11 +106,11 @@ export default function Newsletter() {
             <div className="text-center lg:mb-10 max-md:py-10 max-md:px-5">
 
               <div ref={eyebrowRef} className="flex items-center justify-center gap-3 lg:mb-3">
-                <img src="../../icon/leaf-icon.png" className='w-8 md:w-6 lg:w-8 -scale-x-90' alt="" />
+                <img src="../../icon/leaf-icon.webp" className='w-8 md:w-6 lg:w-8 -scale-x-90' alt="" />
                 <p className="text-xs tracking-[0.25em] text-prime-yellow uppercase font-semibold">
                   Stay in Bloom
                 </p>
-                <img src="../../icon/leaf-icon.png" className='w-8 md:w-6 lg:w-8' alt="" />
+                <img src="../../icon/leaf-icon.webp" className='w-8 md:w-6 lg:w-8' alt="" />
               </div>
 
               <h2 ref={heading1Ref} className="font-elegant text-center lg:pl-10 text-4xl md:text-4xl lg:text-7xl font-medium text-primary leading-tight">
@@ -127,7 +127,7 @@ export default function Newsletter() {
 
               <div ref={dividerRef} className="flex items-center justify-center gap-3 mt-2 lg:mt-5">
                 <div className="h-px w-16 bg-linear-to-r from-transparent to-primary"></div>
-                <img src="../../icon/patel-leafs.png" className='w-6 md:w-4 lg:w-6' alt="" />
+                <img src="../../icon/patel-leafs.webp" className='w-6 md:w-4 lg:w-6' alt="" />
                 <div className="h-px w-16 bg-linear-to-l from-transparent to-primary"></div>
               </div>
 
@@ -182,7 +182,7 @@ export default function Newsletter() {
 
           {/* Image side */}
           <div ref={imageWrapRef} className='w-full max-md:order-1 md:w-2/5 lg:w-1/2 relative h-full'>
-            <img src="../../images/newsletter.png" className='size-full object-cover z-1' alt="" />
+            <img src="../../images/newsletter.webp" className='size-full object-cover z-1' alt="" />
             <div className='absolute top-0 left-0 w-full h-full bg-radial-[circle_at_top] md:bg-radial-[circle_at_right] from-transparent via-transparent to-cream-dark to-95% md:to-80% lg:to-90% z-5'></div>
           </div>
         </div>
@@ -193,19 +193,19 @@ export default function Newsletter() {
 
             {[
               {
-                icon: '../../icon/news-leaf.png',
+                icon: '../../icon/news-leaf.webp',
                 title: 'Exclusive Offers',
                 desc: 'Special discounts and early access to collections.',
                 padding: 'sm:pr-8 lg:pr-16',
               },
               {
-                icon: '../../icon/news-flower.png',
+                icon: '../../icon/news-flower.webp',
                 title: 'Floral Inspiration',
                 desc: 'Tips, trends and ideas to brighten your space.',
                 padding: 'sm:px-8 lg:px-16',
               },
               {
-                icon: '../../icon/news-new.png',
+                icon: '../../icon/news-new.webp',
                 title: 'New Arrivals',
                 desc: 'Be the first to explore our latest blooms.',
                 padding: 'sm:pl-8 lg:pl-16',
