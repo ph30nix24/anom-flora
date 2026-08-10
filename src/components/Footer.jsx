@@ -140,7 +140,7 @@ const Footer = () => {
         <div ref={dividerRef} className="border-t border-white/10 mt-12 pt-6">
           <div ref={bottomRef} className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/40 text-center md:text-left">
-              © 2024 Anom Flora. All rights reserved.
+              © 2026 Anom Flora. All rights reserved.
             </p>
             <p className="text-sm text-white/40 text-center md:text-right">
               Made with ❤️ for flower lovers
