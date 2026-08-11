@@ -1,16 +1,167 @@
-# React + Vite
+# 🌸 Anom Flora
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, elegant, and responsive landing page designed for **Anom Flora**, a premium artificial flower brand.
 
-Currently, two official plugins are available:
+The project combines a soft botanical aesthetic with modern e-commerce UI patterns to create a warm, premium experience across desktop, tablet, and mobile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- 🌿 Botanical-inspired premium visual identity
+- 💐 Floral hero section
+- 🛍️ Collections / Best Sellers
+- 🏡 **Shop by Space**
+- 🌸 **Why Anom Flora**
+- ⭐ Customer Reviews
+- 📩 Newsletter subscription
+- 📱 Desktop, tablet, and mobile responsive layouts
+- 🎨 Cream, olive-green, gold, and botanical color palette
+- ✨ Smooth animations and interactions
+- 🧩 Reusable React components
+- ⚡ Vite-powered development workflow
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the Oxlint configuration
+- **React.js**
+- **Vite**
+- **Tailwind CSS**
+- **GSAP**
+- **Lucide React**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🎨 Design System
+
+| Color | Hex | Usage |
+|---|---|---|
+| Olive Green | `#41452D` | Headings and brand elements |
+| Gold | `#C99635` | Accents, buttons, and highlights |
+| Cream | `#F8F1E7` | Main background |
+| Warm Text | `#555644` | Body text |
+
+The typography combines elegant serif headings with script accents and clean supporting text.
+
+## 📂 Project Structure
+
+```text
+anom-flora/
+├── public/
+│   └── images/
+├── src/
+│   ├── components/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+> Folder names may vary depending on the current implementation.
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/anom-flora.git
+cd anom-flora
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Then open the local URL provided by Vite, usually:
+
+```text
+http://localhost:5173
+```
+
+### 4. Production build
+
+```bash
+npm run build
+```
+
+### 5. Preview production build
+
+```bash
+npm run preview
+```
+
+## 📱 Responsive Design
+
+### Desktop
+Large editorial layouts, spacious typography, multi-column cards, and prominent floral imagery.
+
+### Tablet
+Adjusted spacing, typography, image proportions, and card layouts while maintaining the premium visual hierarchy.
+
+### Mobile
+Stacked sections, touch-friendly buttons, mobile navigation, full-width imagery, and vertically arranged content.
+
+## 🧩 Main Sections
+
+### Hero
+Introduces Anom Flora with premium floral photography, brand messaging, and a primary collection CTA.
+
+### Best Sellers 
+A section which shows the best selling products of the ecommerce store.
+
+### Why Anom Flora
+Communicates the brand's values around quality, lasting beauty, thoughtful design, and versatility.
+
+### Customer Reviews
+Uses testimonials and ratings to build trust and social proof.
+
+### Newsletter
+Encourages visitors to subscribe for:
+
+- Exclusive offers
+- Floral inspiration
+- New arrivals
+
+## 🎯 Design Goals
+
+The visual direction focuses on:
+
+> **Elegant • Natural • Premium • Warm • Modern**
+
+The design uses photography, whitespace, refined typography, subtle borders, and muted colors instead of heavy UI elements.
+
+## 🔮 Future Improvements
+
+- Product detail pages
+- Shopping cart
+- Wishlist
+- Search
+- User authentication
+- Payment integration
+- Admin dashboard
+- Newsletter backend integration
+- SEO optimization
+- Accessibility improvements
+- Image and performance optimization
+
+## 👨‍💻 Author
+
+**Anuj**
+
+Frontend Developer focused on building modern, responsive, and interactive web experiences.
+
+- GitHub: https://github.com/ph30nix24/
+- LinkedIn: https://www.linkedin.com/in/anuj-kumar-ph30nix-dev/
+
+## 📄 License
+
+This project is intended for portfolio and demonstration purposes.
+
+---
+
+⭐ If you like the project, consider giving it a star!
